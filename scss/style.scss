@@ -1,0 +1,116 @@
+@import 'config';
+@import 'utilities';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: #fff;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: $dark-color;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+
+}
+
+.button {
+    display: inherit;
+    margin-top: 2rem;
+}
+
+// Shuriken Button
+#btn-register, #btn-login {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .shuriken {
+        display: flex;
+    }
+
+    .shuriken img {
+        position: fixed;
+        width: 3rem;
+        padding: 0 0 0 80rem;
+        transition: all 0.5s ease-in;
+        transform: translate(20px, 10px, 0px);
+        
+        &:hover {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 2rem;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    border-bottom: solid 1px $light-color;
+    opacity: 0.9;
+
+    a {
+        color: #fff;
+        padding: 0.5rem;
+        margin: 0 0.25rem;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
+    ul {
+        display: flex;
+        margin-right: 3rem;
+    }
+}
+
+// Landing
+.landing {
+    position: relative;
+    background: url('../img/showcase.jpg') no-repeat;
+    height: 100vh;
+
+    &-inner {
+        color: #fff;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 3;
+    }
+
+    // Landing Images 
+    .landing-upper img {
+        width: 30%;
+        padding-top: 100px;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        float: right;
+}
+
+
+}
