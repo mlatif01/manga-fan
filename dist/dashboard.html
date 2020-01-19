@@ -9,30 +9,31 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <title>Welcome to MangaFan</title>
 </head>
-<body>
+<body [data-app]="dashboard">
     <!-- Navigation-->
     <nav class="navbar bg-dark">
         <h1>
-            <a href="#">
+            <a href="" class="user-item" id="dashboard">
                 <i class="fab fa-cloudversify"></i> MangaFan
             </a>
         </h1>
         <ul>
-            <li><a href="readmanga.html">Read Manga</a></li>
-            <li><a href="account.html">Account</a></li>
-            <li><a href="index.html">Logout</a></li>
+            <li><a href="#" class="user-item" id="readmanga">Read Manga</a></li>
+            <li><a href="#" class="user-item" id="account">Account</a></li>
+            <li><a href="" id="logout">Logout</a></li>
         </ul>
     </nav>
 
     <section class="container">
         <h1 class="large text-primary">
-            HEADING
+            Dashboard
         </h1>
         <p class="lead">
-            <i class="fas fa-user"></i> TEXT
+            <i class="fas fa-user"></i> USER INFO
         </p>
     </section>
 
-    <script src="js/main.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 </html>
