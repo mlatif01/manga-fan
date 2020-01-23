@@ -46,7 +46,7 @@ router.post('/', verify, async (req, res) => {
         console.log("New Entry ");
         try {
             const savedEntry = await entry.save();
-            res.send({ID: favManga.id});
+            res.send({ID: entry.id});
         } catch(err) {
             res.status(400).send(err);
         }
@@ -57,7 +57,7 @@ router.post('/', verify, async (req, res) => {
         entry.mangas.push(manga);
         try {
             const savedEntry = await entry.save();
-            res.send({ID: favManga.id});
+            res.send({ID: entry.id});
         } catch(err) {
             res.status(400).send(err);
         }
