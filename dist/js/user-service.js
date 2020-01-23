@@ -1,9 +1,5 @@
-// DOM Elements
-const formGroup = document.querySelectorAll('.form-group');
-const logoutButton = document.getElementById('logout');
-const loginForm = document.getElementById('login-form');
-
-const baseURL = 'http://localhost:3000/api/';
+// HTTP Request Methods for User
+var baseURL = 'http://localhost:3000/api/';
 
 // Functions
 async function getUserData() {
@@ -22,7 +18,7 @@ async function getUserData() {
     return data;
 }
 
-async function onLogin(e) {
+async function login(e) {
     // prevent page from navigating to another page on submit
     e.preventDefault();
 
@@ -51,14 +47,46 @@ async function onLogin(e) {
     }
 }
 
+async function register(e) {
+    // prevent page from navigating to another page on submit
+    e.preventDefault();
+
+    // Check password fields are the same
+    const password = formGroup[2].firstElementChild.value;
+    const checkPassword = formGroup[3].firstElementChild.value;
+    if (password != checkPassword) {
+        console.log("Password does not match!");
+        return;
+    }
+
+    const username = formGroup[0].firstElementChild.value;
+    const email = formGroup[1].firstElementChild.value;
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        // Serialize json data
+        body: JSON.stringify({
+            username: username,
+            email: email,
+            password: password
+        })
+    }
+    
+    // Send post request to server
+    const response = await fetch(baseURL+'user/register', options);
+    const data = await response.json();
+
+}
+
+
 function onLogout() {
     console.log("clear");
     localStorage.clear();
+    window.location.replace('index.html');
 }
 
-// Event Listeners
-if (loginForm) {
-    loginForm.addEventListener('submit', onLogin);
-}
 
 

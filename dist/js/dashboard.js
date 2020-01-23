@@ -12,6 +12,7 @@ if (localStorage.getItem('user-token') == null) {
 
 // DOM Elements
 const usernameHeading = document.getElementById('username-heading');
+const logoutButton = document.getElementById('logout');
 
 // Functions
 

@@ -1,5 +1,5 @@
 // HTTP Request Methods for Profile
-const baseURL = 'http://localhost:3000/api/';
+var baseURL = 'http://localhost:3000/api/';
 
 async function getProfileData() {
     const options = {
@@ -14,6 +14,7 @@ async function getProfileData() {
     const response = await fetch(baseURL+'profile', options);
     const data = await response.json();
     
+    console.log(data);
     return data;
 }
 
@@ -42,7 +43,6 @@ async function postProfile(e) {
         body: JSON.stringify({
             about: profileData.about,
             age: parseInt(profileData.age),
-            userId: "5e28860140c59a324c33ceae",
             instagram: profileData.instagram
         })
     }
@@ -57,5 +57,6 @@ async function postProfile(e) {
         console.log(err);
     }
 
+    location.reload(true);
 
 }

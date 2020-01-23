@@ -3,6 +3,7 @@ const inputs = document.querySelectorAll(".form-field");
 const submitButton = document.getElementById("submit-button");
 const profileForm = document.getElementById("profile-form");
 const formGroup = document.querySelectorAll('.form-group');
+const logoutButton = document.getElementById('logout');
 let editChanges = false;
 
 // Authorisation to allow user to access certain resources
@@ -42,4 +43,8 @@ function populateInputs() {
 // Event Handlers
 if (!editChanges) {
     profileForm.addEventListener('submit', postProfile);
+}
+
+if (logoutButton != null) {
+    logoutButton.addEventListener('click', onLogout);
 }

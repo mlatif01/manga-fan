@@ -8,6 +8,8 @@ const cors = require('cors');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
 const profileRoute = require('./routes/profile');
+const favMangaRoute = require('./routes/fav-manga');
+
 
 dotenv.config();
 
@@ -28,6 +30,8 @@ app.use(express.json());
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/profile', profileRoute);
+app.use('/api/favmanga', favMangaRoute);
+
 
 // Run server on the specified port
 app.listen(3000, () => console.log('Server up and running'));

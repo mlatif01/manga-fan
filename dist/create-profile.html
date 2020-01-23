@@ -13,13 +13,14 @@
     <!-- Navigation-->
     <nav class="navbar bg-dark">
         <h1>
-            <a href="dashboard.html">
+            <a href="dashboard.html" class="user-item" id="dashboard">
                 <i class="fab fa-cloudversify"></i> MangaFan
             </a>
         </h1>
         <ul>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="#" class="user-item" id="readmanga">Read Manga</a></li>
+            <li><a href="#" class="user-item" id="account">Account</a></li>
+            <li><a href="#" id="logout">Logout</a></li>
         </ul>
     </nav>
 
@@ -52,6 +53,7 @@
         </form>
     </section>
 
+    <script src="js/user-service.js"></script>
     <script src="js/profile-service.js"></script>
     <script src="js/profile.js"></script>
 </body>

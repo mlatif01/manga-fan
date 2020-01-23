@@ -24,8 +24,18 @@ const profileValidation = (data) => {
     const schema = Joi.object({
         about: Joi.string().min(6).required(),
         age: Joi.number().min(18).max(100).required(),
-        userId: Joi.string().required(),
         instagram: Joi.string().uri().required()
+    })
+    return schema.validate(data);
+}
+
+// Fav Manga Validation
+const favMangaValidation = (data) => {
+    const schema = Joi.object({
+        author: Joi.string().min(1).max(255).required(),
+        title: Joi.string().min(1).max(255).required(),
+        releaseYear: Joi.number().required(),
+        latestChapter: Joi.number().max(99999).required(),
     })
     return schema.validate(data);
 }
@@ -33,3 +43,4 @@ const profileValidation = (data) => {
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.profileValidation = profileValidation;
+module.exports.favMangaValidation = favMangaValidation;
