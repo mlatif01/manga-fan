@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
         // res.send('Logged In!');
 })
 
-// Get user profile
+// GET - user login data
 router.get('/', verify, async (req, res) => {
     const user = await User.findById(req.user);
     res.send({

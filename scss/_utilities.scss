@@ -47,7 +47,13 @@
 .medium {
     font-size: 2rem;
     line-height: 1;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.8rem;
+}
+
+.small {
+    font-size: 1rem;
+    line-height: 0.8;
+    margin-bottom: 0.6rem;
 }
 
 .lead {
@@ -120,10 +126,15 @@
         margin: 1.2rem 0;
     }
 
+    &-text {
+        display: block;
+    }
+
     input[type='text'],
     input[type='email'],
     input[type='password'],
     input[type='date'],
+    input[type='number'],
     select,
     textarea {
         display: block;

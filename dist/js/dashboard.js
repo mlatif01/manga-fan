@@ -1,4 +1,3 @@
-
 // Authorisation to allow user to access certain resources
 // check if local storage has user details (temp session)
 if (localStorage.getItem('user-token') == null) {
