@@ -31,6 +31,44 @@
         <p class="lead" id="username-heading">
             <i class="fas fa-user"></i> Welcome 
         </p>
+
+        <div class="dash-buttons">
+            <a href="create-profile.html" class="btn">
+                <i class="fas fa-user-circle text-primary"></i>
+                Edit Profile
+            </a>
+        </div>
+
+        <h2 class="my-2">
+            Favourite Manga
+        </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Author</th>
+                    <th class="hide-sm">Title</th>
+                    <th class="hide-sm">Release Year</th>
+                    <th class="hide-sm">Latest Chapter</th>
+                    <th>
+                        <button class="btn btn-sm btn-success" id="add-manga">
+                            <i class="fas fa-plus"></i>
+                        </button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Akira Toriyama</td>
+                    <td>Dragon Ball Super</td>
+                    <td class="hide-sm">2015</td>
+                    <td>56</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
     <script src="js/user.js"></script>

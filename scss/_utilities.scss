@@ -44,6 +44,12 @@
     margin-bottom: 1rem;
 }
 
+.medium {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0.7rem;
+}
+
 .lead {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -67,10 +73,28 @@
     outline: none;
     transition: all 0.2s ease-in;
 
+    &-sm {
+        padding: 0.3rem 0.6rem;
+    }
+
     &.btn-primary {
         @include set-background($primary-color);
         &:hover {
             background: lighten($primary-color, 10%);
+        }
+    }
+
+    &.btn-success {
+        @include set-background($success-color);
+        &:hover {
+            background: lighten($success-color, 10%);
+        }
+    }
+
+    &.btn-danger {
+        @include set-background($danger-color);
+        &:hover {
+            background: lighten($danger-color, 10%);
         }
     }
 
@@ -107,5 +131,17 @@
         padding: 0.4rem;
         font-size: 1.2rem;
         border: 1px solid #ccc;
+    }
+}
+
+// table 
+.table {
+    th, td {
+        padding: 1rem;
+        text-align: left;
+    }
+
+    th {
+        background: $light-color;
     }
 }
