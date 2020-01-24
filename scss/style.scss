@@ -6,6 +6,18 @@
     padding: 0;
 }
 
+// Maybe remove this
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // height: 70vh;
+    // width: 100vw;
+    // min-height: 400px;
+    // clear: both;
+  }
+
 body {
     font-family: 'Raleway', sans-serif;
     font-size: 1rem;
@@ -113,13 +125,15 @@ img {
     }   
 }
 
-// Footer
+// Footer // TODO FIX FOOTER ISSUE
 footer {
 
-    position: absolute;
+    margin-top: auto;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
+    flex: 0 0 50px;
 
     .footer-cols {
         border-top: #444 solid 1px;

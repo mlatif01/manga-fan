@@ -156,3 +156,74 @@
         background: $light-color;
     }
 }
+
+// Modal
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 20%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.35s ease-in;
+
+    &-dialog {
+        position: relative;
+        max-width: 800px;
+        max-height: 80vh;
+        border-radius: 5px;
+        @include set-background($light-color);
+        overflow: auto;
+        cursor: default;
+    }
+
+    &-dialog > * {
+        padding: 1rem;
+    }
+
+    &-header {
+        @include set-background($primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-header, &-close {
+        font-size: 1.5rem;
+    }
+
+    &.is-visible {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &-content > .form 
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    input[type='date'],
+    input[type='number'],
+    select,
+    textarea {
+        display: block;
+        width: auto;
+    }
+}
+
+[data-animation="slideInOutLeft"] .modal-dialog {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.5s $bounce-easing;
+}
+
+[data-animation="slideInOutLeft"].is-visible .modal-dialog {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.2s;
+}
