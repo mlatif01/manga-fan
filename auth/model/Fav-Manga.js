@@ -17,8 +17,8 @@ const FavMangaSchema = new mongoose.Schema({
         releaseYear: {
             type: Number,
             required: true,
-            max: 255,
-            min: 4
+            max: 3000,
+            min: 1900
         },
         latestChapter: {
             type: Number,

@@ -30,6 +30,8 @@ router.post('/', verify, async (req, res) => {
     // Checking if the user has fav manga entry
     const favMangaExists = await FavManga.findOne({userId: req.user._id});
 
+    // TODO - Don't allow duplicate manga entries to mangas array
+    
     const manga = {
         author: req.body.author,
         title: req.body.title,
@@ -57,8 +59,9 @@ router.post('/', verify, async (req, res) => {
         entry.mangas.push(manga);
         try {
             const savedEntry = await entry.save();
-            res.send({ID: entry.id});
+            res.send({mangaID: entry.id});
         } catch(err) {
+            console.log(err);
             res.status(400).send(err);
         }
     }

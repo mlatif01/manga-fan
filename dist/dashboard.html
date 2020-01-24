@@ -88,17 +88,18 @@
                 <form class="form" id="manga-form">
                     <small class="form-text">Please provide details about the manga</small>
                     <div class="form-group">
-                        <input type="text" placeholder="Author" required>
+                        <input class="form-field" type="text" name="author" placeholder="Author" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Title" required>
+                        <input class="form-field" type="text" name="title" placeholder="Title" required>
                     </div>
                     <div class="form-group">
-                        <input type="number" placeholder="Release Year" required>
+                        <input class="form-field" type="number" name="releaseYear" placeholder="Release Year" required>
                     </div>
                     <div class="form-group">
-                        <input type="number" placeholder="Latest Chapter" required>
+                        <input class="form-field" type="number" name="latestChapter" placeholder="Latest Chapter" required>
                     </div>
+                    <input value="Submit" type="submit" class="btn btn-primary my-1" id="submit-button"/>
                 </form>
             </section>
         </div>
@@ -120,6 +121,7 @@
 
     <!-- Scripts -->
     <script src="js/user-service.js"></script>
+    <script src="js/manga-service.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
 </html>

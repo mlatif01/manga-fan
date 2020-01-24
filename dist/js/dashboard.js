@@ -16,11 +16,10 @@ const logoutButton = document.getElementById('logout');
 const openModalElems = document.querySelectorAll("[data-open]");
 const modalIsVisible = "is-visible";
 const closeModalElems = document.querySelectorAll("[data-close]");
+const mangaInputs = document.querySelectorAll(".form-field");
+const mangaForm = document.getElementById('manga-form');
 
 // Functions
-function addManga(e) {
-    console.log(e);
-}
 
 
 // Event Handlers
@@ -28,10 +27,13 @@ if (logoutButton) {
     logoutButton.addEventListener('click', onLogout);
 }
 
+mangaForm.addEventListener('submit', postManga);
+
 // Modal Events
 // Open Modal
 for(const elem of openModalElems) {
     elem.addEventListener("click", function() {
+        mangaForm.reset();
         const modalId = this.dataset.open;
         document.getElementById(modalId).classList.add(modalIsVisible);
     });

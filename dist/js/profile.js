@@ -1,5 +1,5 @@
 // DOM Elements
-const inputs = document.querySelectorAll(".form-field");
+const profileInputs = document.querySelectorAll(".form-field");
 const submitButton = document.getElementById("submit-button");
 const profileForm = document.getElementById("profile-form");
 const formGroup = document.querySelectorAll('.form-group');
@@ -29,13 +29,13 @@ if (localStorage.getItem('user-token') == null) {
 
 // Functions
 function populateInputs() {
-    for (let i = 0, len = inputs.length; i < len; i++) {
-        if (inputs[i].type === "number") {
-            inputs[i].value = userProfileData.age;
+    for (let i = 0, len = profileInputs.length; i < len; i++) {
+        if (profileInputs[i].type === "number") {
+            profileInputs[i].value = userProfileData.age;
         } else {
-            let key = inputs[i].name;
+            let key = profileInputs[i].name;
             console.log(typeof(key));
-            inputs[i].value = userProfileData[key];
+            profileInputs[i].value = userProfileData[key];
         }
     }
 }

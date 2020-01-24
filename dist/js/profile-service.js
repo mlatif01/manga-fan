@@ -29,8 +29,8 @@ async function postProfile(e) {
     }
 
     // parse info from input fields
-    for (let i = 0, len = inputs.length; i < len; i++) {
-        profileData[inputs[i].name] = inputs[i].value;
+    for (let i = 0, len = profileInputs.length; i < len; i++) {
+        profileData[profileInputs[i].name] = profileInputs[i].value;
     }
 
     const options = {
