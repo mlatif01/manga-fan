@@ -13,11 +13,18 @@ router.post('/register', async (req, res) => {
 
     // Checking if the username is already in the database
     const userExists = await User.findOne({username: req.body.username});
-    if (userExists) return res.status(400).send('Username already exists');
+    if (userExists) {
+        console.log("Username already exists");
+        return res.status(400).send('Username already exists');
+    }
+
 
     // Checking if the email is already in the database
     const emailExists = await User.findOne({email: req.body.email});
-    if (emailExists) return res.status(400).send('Email already exists');
+    if (emailExists) {
+        console.log("Email already exists");
+        return res.status(400).send('Email already exists');
+    }
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
@@ -31,10 +38,12 @@ router.post('/register', async (req, res) => {
     });
     try {
         const savedUser = await user.save();
-        res.send({user: user.id});
+        res.send({userId: user.id});
     } catch(err) {
+        console.log("REGISTER ERROR");
         res.status(400).send(err);
     }
+    console.log("REGISTERED");
 });
 
 // Login - POST

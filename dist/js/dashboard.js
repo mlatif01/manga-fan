@@ -13,11 +13,17 @@ if (localStorage.getItem('user-token') == null) {
 // DOM Elements
 const usernameHeading = document.getElementById('username-heading');
 const logoutButton = document.getElementById('logout');
+const addMangaButton = document.getElementById('add-manga');
 
 // Functions
-
+function addManga(e) {
+    console.log(e);
+}
 
 // Event Handlers
 if (logoutButton) {
     logoutButton.addEventListener('click', onLogout);
 }
+
+addMangaButton.addEventListener('click', addManga);
+

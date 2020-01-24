@@ -79,6 +79,7 @@ async function register(e) {
     const response = await fetch(baseURL+'user/register', options);
     const data = await response.json();
 
+    window.location.replace('login.html');
 }
 
 
