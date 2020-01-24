@@ -1,6 +1,22 @@
 // HTTP Request Methods for Profile
 var baseURL = 'http://localhost:3000/api/';
 
+async function getMangaData() {
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('user-token')
+        }
+    }
+
+    // Send get request to server
+    const response = await fetch(baseURL+'favmanga', options);
+    const data = await response.json();
+    
+    return data;
+}
+
 async function postManga(e) {
     e.preventDefault();
 

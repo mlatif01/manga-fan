@@ -8,14 +8,9 @@ const { favMangaValidation } = require('../routes/validation.js');
 
 // User profile data - GET
 router.get('/', verify, async (req, res) => {
-    const favManga = await FavManga.find({userId: req.user._id});
+    const favManga = await FavManga.findOne({userId: req.user._id});
     console.log(favManga);
-    res.send({
-        author: favManga[0].author,
-        title: favManga[0].title,
-        releaseYear: favManga[0].releaseYear,
-        latestChapter: favManga[0].latestChapter
-    });
+    res.send(favManga.mangas);
 })
 
 // Register - POST
