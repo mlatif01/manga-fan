@@ -64,3 +64,39 @@ async function postManga(e) {
     location.reload(true);
 
 }
+
+async function deleteManga(e) {
+    e.preventDefault();
+
+    const flag = confirm('Are you sure you want to delete this item?');
+
+    // Tedious!
+    const mangaId = e.target.parentElement.parentElement.parentElement.id;
+
+    if (flag) {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('user-token')
+            },
+            // Serialize json data
+            body: JSON.stringify({
+                mangaId: mangaId
+            })
+        };
+    
+        try {
+            // Send post request to server
+            const response = await fetch(baseURL+'favmanga', options);
+            const data = await response.json();
+            console.log(data);
+        } catch(err) {
+            console.log(err);
+        }
+    
+        location.reload(true);
+    }
+
+
+}

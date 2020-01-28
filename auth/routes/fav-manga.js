@@ -36,8 +36,6 @@ router.post('/', verify, async (req, res) => {
         lastRead: req.body.lastRead
     }
     
-    console.log("NAH");
-
     if (!favMangaExists) {
         // Create a new fav manga entry
         const entry = new FavManga({
@@ -63,6 +61,23 @@ router.post('/', verify, async (req, res) => {
             console.log(err);
             res.status(400).send(err);
         }
+    }
+});
+
+// remove manga - DELETE
+router.delete('/', verify, async (req, res) => {
+    const user = await User.findById(req.user);
+    // Checking if the user has fav manga entry
+    const entry = await FavManga.findOne({userId: req.user._id});
+    const mangaArr = entry.mangas;
+    try {
+        mangaArr.pull({_id: req.body.mangaId});
+        entry.save();
+        res.send({mangaID: entry.id});
+        console.log("Deleted Manga Successfully");
+    } catch (err) {
+        console.log(err);
+        res.status(400).send(err);
     }
 });
 

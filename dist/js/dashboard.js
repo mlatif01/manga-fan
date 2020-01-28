@@ -31,28 +31,48 @@ const mangaTableBody = document.getElementById('manga-table-body');
 
 // Functions
 function populateMangaTable() {
-
+    // keep track of the number of mangas
+    var numOfMangas = 0;
     // Loop through every manga item
     for (const manga of mangaData) {
         // Create an empty <tr> element and add to the 1st position of the table
-        let row = mangaTableBody.insertRow();
-        console.log(manga.date);
-        let mangaObj = {
+        var mangaObj = {
             author: manga.author,
             title: manga.title,
             releaseYear: manga.releaseYear,
             latestChapter: manga.latestChapter,
-            lastRead: manga.lastRead
+            lastRead: manga.lastRead,
+            mangaId: manga._id
         }
-        for (let i = 0, len = Object.keys(manga).length - 2; i < len; i++) {
+        console.log(mangaObj);
+        
+        let row = mangaTableBody.insertRow();
+        row.setAttribute('id', mangaObj.mangaId);
+
+        numOfMangas += 1;
+
+        for (let i = 0, len = Object.keys(manga).length - 1; i < len; i++) {
             // Insert new cells (<td> elements) in <tr>
             let cell = row.insertCell();
             // Get keys for manga 
             let key = Object.keys(mangaObj)[i];
-            console.log(typeof(mangaObj[key]));
-            cell.innerHTML = typeof(mangaObj[key]) === "string" ? mangaObj[key].toUpperCase() : mangaObj[key];
+
+            // Add del button to last cell
+            if (i === len - 1) {
+                cell.innerHTML = `
+                <button class="btn btn-sm btn-danger" id="del-manga-${numOfMangas}"
+                    data-open="manga-modal">
+                    <i class="fas fa-minus"></i>
+                </button></th>
+                `;
+                // add event listener to del button
+                const delMangaBtn = document.getElementById('del-manga-' + numOfMangas);
+                delMangaBtn.addEventListener('click', deleteManga);
+            } else {
+                cell.innerHTML = typeof(mangaObj[key]) === "string" ? mangaObj[key].toUpperCase() : mangaObj[key];
+                cell.setAttribute('onclick', "window.location='readmanga.html'");    
+            }
         }
-        row.setAttribute('onclick', "window.location='readmanga.html'");
     }
 }
 
