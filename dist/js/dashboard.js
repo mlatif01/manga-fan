@@ -41,7 +41,8 @@ function populateMangaTable() {
             author: manga.author,
             title: manga.title,
             releaseYear: manga.releaseYear,
-            latestChapter: manga.latestChapter
+            latestChapter: manga.latestChapter,
+            lastRead: manga.lastRead
         }
         for (let i = 0, len = Object.keys(manga).length - 2; i < len; i++) {
             // Insert new cells (<td> elements) in <tr>

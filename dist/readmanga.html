@@ -13,13 +13,13 @@
     <!-- Navigation-->
     <nav class="navbar bg-dark">
         <h1>
-            <a href="#">
+            <a href="dashboard.html">
                 <i class="fab fa-cloudversify"></i> MangaFan
             </a>
         </h1>
         <ul>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="#" class="user-item" id="account">Account</a></li>
+            <li><a href="" id="logout">Logout</a></li>
         </ul>
     </nav>
 
@@ -28,11 +28,45 @@
             Read Manga
         </h1>
         <p class="lead">
-            <i class="fas fa-user"></i> Stay up to date with your latest manga!
+            <i class="fas fa-user"></i> Stay up to date with your favourite manga!
         </p>
+
+        <!-- Manga Viewer -->
+        <div class="manga-container">
+
+            <div class="manga-header">
+                <h1 class="medium" style="text-align: center;">
+                    Hajime No Ippo - Chapter 1199 / p13
+                </h1>
+            </div>
+
+            <div class="manga-content">
+                <div class="manga-prev">
+                    <a href="#" class="btn btn-danger">
+                        <i class="fas fa-chevron-circle-left fa-2x"></i>                
+                    </a>
+                </div>
+    
+                <div class="manga-body">
+                    <div class="img-container">
+                        <img src="https://cdn.mangaeden.com/mangasimg/79/791aacdb7bea0fff6b7309a47d824b7aaceb479e51e6aecff8c8c42d.png" alt="">
+                    </div>
+                </div>
+    
+                <div class="manga-next">
+                    <a href="#" class="btn btn-success">
+                        <i class="fas fa-chevron-circle-right fa-2x"></i>                
+                    </a>
+                </div>
+            </div>
+
+            
+        </div>
+
+
     </section>
 
-    <footer class="footer">
+    <!-- <footer class="footer">
         <div class="footer-cols">
             <ul>
                 <li><a href="#">Contact Us</a></li>
@@ -43,7 +77,7 @@
         <div class="footer-bottom my-1">
             Copyright &copy 2020 MangaFan
         </div>
-    </footer>
+    </footer> -->
 
     <script src=""></script>
 </body>

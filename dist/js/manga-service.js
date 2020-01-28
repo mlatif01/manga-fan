@@ -24,13 +24,15 @@ async function postManga(e) {
         author: undefined,
         title: undefined,
         releaseYear: undefined,
-        latestChapter: undefined
+        latestChapter: undefined,
+        lastRead: undefined
     }
 
     // parse info form input fields
     for (let i = 0, len = mangaInputs.length; i < len; i++) {
         mangaData[mangaInputs[i].name] = mangaInputs[i].value;
     }
+
 
     const options = {
         method: 'POST',
@@ -43,7 +45,8 @@ async function postManga(e) {
             author: mangaData.author,
             title: mangaData.title,
             releaseYear: parseInt(mangaData.releaseYear),
-            latestChapter: parseInt(mangaData.latestChapter)
+            latestChapter: parseInt(mangaData.latestChapter), 
+            lastRead: parseInt(mangaData.lastRead)
         })
     }
 

@@ -15,6 +15,7 @@ router.get('/', verify, async (req, res) => {
 
 // Register - POST
 router.post('/', verify, async (req, res) => {
+    
     // Get User Details
     const user = await User.findById(req.user);
 
@@ -31,9 +32,12 @@ router.post('/', verify, async (req, res) => {
         author: req.body.author,
         title: req.body.title,
         releaseYear: req.body.releaseYear,
-        latestChapter: req.body.latestChapter
+        latestChapter: req.body.latestChapter,
+        lastRead: req.body.lastRead
     }
     
+    console.log("NAH");
+
     if (!favMangaExists) {
         // Create a new fav manga entry
         const entry = new FavManga({

@@ -25,6 +25,11 @@ const FavMangaSchema = new mongoose.Schema({
             required: true,
             max: 99999
         },
+        lastRead: {
+            type: Number,
+            required: true,
+            max: 99999
+        },
         date: {
             type: Date,
             default: Date.now

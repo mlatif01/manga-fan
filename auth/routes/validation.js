@@ -36,6 +36,7 @@ const favMangaValidation = (data) => {
         title: Joi.string().min(1).max(255).required(),
         releaseYear: Joi.number().required(),
         latestChapter: Joi.number().max(99999).required(),
+        lastRead: Joi.number().max(99999).required()
     })
     return schema.validate(data);
 }
