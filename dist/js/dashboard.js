@@ -65,12 +65,13 @@ function populateMangaTable() {
                     <i class="fas fa-minus"></i>
                 </button></th>
                 `;
+
                 // add event listener to del button
                 const delMangaBtn = document.getElementById('del-manga-' + numOfMangas);
                 delMangaBtn.addEventListener('click', deleteManga);
             } else {
                 cell.innerHTML = typeof(mangaObj[key]) === "string" ? mangaObj[key].toUpperCase() : mangaObj[key];
-                cell.setAttribute('onclick', "window.location='readmanga.html'");    
+                cell.setAttribute('onclick', `window.location='readmanga.html?uri=key&id=${mangaObj.mangaId}&title=${mangaObj.title}&chapter=${mangaObj.lastRead}'`);    
             }
         }
     }

@@ -68,7 +68,7 @@ router.post('/login', async (req, res) => {
             "token": token,
         });
 
-        // res.send('Logged In!');
+        res.send('Logged In!');
 })
 
 // GET - user login data

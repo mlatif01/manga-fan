@@ -161,6 +161,10 @@
     tr {
         width: 100vw;
         cursor: pointer;
+
+        &:hover {
+            background-color: $light-color;
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-// HTTP Request Methods for Profile
+// HTTP Request Methods for Fav Manga
 var baseURL = 'http://localhost:3000/api/';
 
 async function getMangaData() {

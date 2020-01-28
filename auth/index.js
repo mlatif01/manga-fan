@@ -9,7 +9,7 @@ const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
 const profileRoute = require('./routes/profile');
 const favMangaRoute = require('./routes/fav-manga');
-
+const mangaEdenRoute = require('./routes/manga-eden');
 
 dotenv.config();
 
@@ -26,11 +26,12 @@ app.use(cors());
 // Middleware
 app.use(express.json());
 
-// Route Middleware
+// Router Middleware
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/profile', profileRoute);
 app.use('/api/favmanga', favMangaRoute);
+app.use('/api/mangaeden', mangaEdenRoute);
 
 
 // Run server on the specified port
