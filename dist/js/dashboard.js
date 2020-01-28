@@ -52,6 +52,7 @@ function populateMangaTable() {
             console.log(typeof(mangaObj[key]));
             cell.innerHTML = typeof(mangaObj[key]) === "string" ? mangaObj[key].toUpperCase() : mangaObj[key];
         }
+        row.setAttribute('onclick', "window.location='readmanga.html'");
     }
 }
 
