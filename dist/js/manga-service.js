@@ -112,7 +112,7 @@ async function editManga(e, mangaId, oldLastRead) {
         // Serialize json data
         body: JSON.stringify({
             mangaId: mangaId,
-            newlastRead: parseInt(e.target.innerHTML),
+            newLastRead: parseInt(e.target.innerHTML),
             oldLastRead: parseInt(oldLastRead)
         })
     };

@@ -83,13 +83,26 @@ router.delete('/', verify, async (req, res) => {
 // Edit - PUT
 router.put('/', verify, async (req, res) => {
     // Find manga entry in users document
-    const entry = await FavManga.findOne({userId: req.user._id}, 
-        {mangas: { $elemMatch: {lastRead: req.body.oldLastRead}
-    }});
+    // const entry = await FavManga.findOne({userId: req.user._id}, 
+    //     {mangas: { $elemMatch: {_id: req.body.mangaId}
+    // }});
 
     try {
-        console.log(entry);
-        // res.send({mangaID: entry.id});
+        const entry = await FavManga.updateOne(
+            // match criteria
+            {
+                userId: req.user._id,
+                mangas: { $elemMatch: {_id: req.body.mangaId}}
+            },
+
+            // update first match
+            {
+                $set: {
+                    "mangas.$.lastRead": req.body.newLastRead
+                }
+            }
+        )
+        res.send({mangaID: req.body.mangaId});
     } catch (err) {
         console.log(err);
         res.status(400).send(err);
