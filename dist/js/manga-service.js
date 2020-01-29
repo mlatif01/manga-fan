@@ -126,5 +126,4 @@ async function editManga(e, mangaId, oldLastRead) {
         console.log(err);
     }
     
-
 }

@@ -80,6 +80,8 @@ function populateMangaTable() {
                     if (newLastRead != undefined && parseInt(newLastRead) <= mangaObj.latestChapter) {
                         e.target.innerHTML = newLastRead;
                         editManga(e, mangaObj.mangaId, oldLastRead);
+                        location.reload(true);
+
                     } else {
                         e.target.innerHTML = oldLastRead;
                     }

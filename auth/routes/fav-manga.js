@@ -80,13 +80,8 @@ router.delete('/', verify, async (req, res) => {
     }
 });
 
-// Edit - PUT
+// Edit last read - PUT
 router.put('/', verify, async (req, res) => {
-    // Find manga entry in users document
-    // const entry = await FavManga.findOne({userId: req.user._id}, 
-    //     {mangas: { $elemMatch: {_id: req.body.mangaId}
-    // }});
-
     try {
         const entry = await FavManga.updateOne(
             // match criteria
