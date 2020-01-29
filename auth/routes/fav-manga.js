@@ -9,7 +9,7 @@ const { favMangaValidation } = require('../routes/validation.js');
 // User profile data - GET
 router.get('/', verify, async (req, res) => {
     const favManga = await FavManga.findOne({userId: req.user._id});
-    console.log(favManga);
+    // console.log(favManga);
     res.send(favManga.mangas);
 })
 
@@ -27,7 +27,7 @@ router.post('/', verify, async (req, res) => {
     const favMangaExists = await FavManga.findOne({userId: req.user._id});
 
     // TODO - Don't allow duplicate manga entries to mangas array
-    
+    // TODO - Fetch (MangaEden) author, releaseYear, latestChapter, lastRead should be set to 1
     const manga = {
         author: req.body.author,
         title: req.body.title,

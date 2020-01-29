@@ -14,17 +14,20 @@ router.get('/:info', verify, async (req, res) => {
     const chapter = info[1];
     let mangaId = "";
     let chapterId = "";
+    console.log(title, chapter);
     
     // get full manga list
     const listResponse = await fetch(baseMangaListURL);
     let listData = await listResponse.json();
-
+    
     // get manga id
     listData.manga.forEach(manga => {
-        if (manga.t === title) {
+        if (manga.t.toUpperCase() === title.toUpperCase()) {
             mangaId = manga.i;
         }
     });
+
+    console.log(mangaId);
 
     // use manga id to find chapter id
     const mangaResponse = await fetch(baseMangaChapterURL + mangaId);

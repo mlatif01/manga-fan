@@ -1,7 +1,6 @@
 // HTTP Request Methods for Manga Eden Api
 var baseMangaListURL = 'https://www.mangaeden.com/api/list/0';
 var baseURL = 'http://localhost:3000/api/';
-var imgArr = [];
 
 // Fetch Manga List only once, then set ID of manga in local storage
 async function getMangaEdenChapter(title, chapter) {

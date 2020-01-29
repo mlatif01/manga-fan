@@ -9,10 +9,14 @@ const mangaInfo = {
 // images will be from right to left
 const chapterImgArr = [];
 var baseMangaImgURL = 'https://cdn.mangaeden.com/mangasimg/';
+var pageNumber = 0;
 
 // DOM Elements
 const mangaHeaderH1 = document.getElementById('manga-header-heading');
 const mangaImg = document.getElementById('manga-img');
+const prevBtn = document.querySelector('.manga-prev a');
+const nextBtn = document.querySelector('.manga-next a');
+
 
 // Authorisation to allow user to access certain resources
 // Check if local storage has user details (temp)
@@ -21,8 +25,8 @@ async function startup() {
     window.location.replace('index.html');
     // Set up the page
     } else {
-        // Display Manga Name
-        mangaHeaderH1.innerHTML = `${mangaInfo.title} - Chapter ${mangaInfo.chapter} / p1`
+        // Display Manga Name, chapter and pn
+        updateChapterInfo();
 
         // Retrieve Manga Chapter
         const chapterData = await getMangaEdenChapter(mangaInfo.title, mangaInfo.chapter);
@@ -36,13 +40,48 @@ async function startup() {
         chapterImgArr.reverse();
 
         // display first page of the manga
-        mangaImg.setAttribute("src", baseMangaImgURL + chapterImgArr[0]);
+        mangaImg.setAttribute("src", baseMangaImgURL + chapterImgArr[pageNumber]);
 
     }
 }
 
 // Functions
+function nextPage(e) {
+    if (pageNumber < chapterImgArr.length - 1) {
+        mangaImg.setAttribute("src", baseMangaImgURL + chapterImgArr[pageNumber + 1]);
+        pageNumber += 1;
+        updateChapterInfo();
+    }
+}
+
+function prevPage(e) {
+    if (pageNumber >= 1) {
+        mangaImg.setAttribute("src", baseMangaImgURL + chapterImgArr[pageNumber - 1]);
+        pageNumber -= 1;
+        updateChapterInfo();
+    }
+}
+
+function updateChapterInfo() {
+    mangaHeaderH1.innerHTML = `${mangaInfo.title} - Chapter: ${mangaInfo.chapter} / Page: ${pageNumber + 1}`
+}
 
 // Event Handlers
+prevBtn.addEventListener('click', prevPage);
+nextBtn.addEventListener('click', nextPage);
+
+// change page when left or right is clicked
+document.addEventListener('keydown', (e) => {
+    const key = e.key;
+    console.log(e.key);
+    switch (key) {
+        case "ArrowLeft":
+            prevPage();
+            break;
+        case "ArrowRight":
+            nextPage();
+            break;
+    }
+});
 
 startup();
