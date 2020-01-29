@@ -66,7 +66,6 @@ router.post('/', verify, async (req, res) => {
 
 // remove manga - DELETE
 router.delete('/', verify, async (req, res) => {
-    const user = await User.findById(req.user);
     // Checking if the user has fav manga entry
     const entry = await FavManga.findOne({userId: req.user._id});
     const mangaArr = entry.mangas;
@@ -83,8 +82,19 @@ router.delete('/', verify, async (req, res) => {
 
 // Edit - PUT
 router.put('/', verify, async (req, res) => {
-    const user = await User.findById(req.user);
-    const userId = user._id;
+    // Find manga entry in users document
+    const entry = await FavManga.findOne({userId: req.user._id}, 
+        {mangas: { $elemMatch: {lastRead: req.body.oldLastRead}
+    }});
+
+    try {
+        console.log(entry);
+        // res.send({mangaID: entry.id});
+    } catch (err) {
+        console.log(err);
+        res.status(400).send(err);
+    }
+
 });
 
 module.exports = router;

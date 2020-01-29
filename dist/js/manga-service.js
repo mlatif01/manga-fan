@@ -97,6 +97,34 @@ async function deleteManga(e) {
     
         location.reload(true);
     }
+}
 
+async function editManga(e, mangaId, oldLastRead) {
+    e.preventDefault();
+
+    console.log("call from client");
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('user-token')
+        },
+        // Serialize json data
+        body: JSON.stringify({
+            mangaId: mangaId,
+            newlastRead: parseInt(e.target.innerHTML),
+            oldLastRead: parseInt(oldLastRead)
+        })
+    };
+
+    try {
+        // Send post request to server
+        const response = await fetch(baseURL+'favmanga', options);
+        const data = await response.json();
+        console.log(data);
+    } catch (err) {
+        console.log(err);
+    }
+    
 
 }

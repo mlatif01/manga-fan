@@ -7,7 +7,7 @@ if (localStorage.getItem('user-token') == null) {
     getUserData().then( data => {
         userProfile = data;
         usernameHeading.innerHTML += userProfile.username;
-     })
+     });
 
     // Retrieve Manga Data
     getMangaData().then( data => {
@@ -36,7 +36,8 @@ function populateMangaTable() {
     // Loop through every manga item
     for (const manga of mangaData) {
         // Create an empty <tr> element and add to the 1st position of the table
-        var mangaObj = {
+        // need let not var to use the CLOSURE for this obj
+        let mangaObj = {
             author: manga.author,
             title: manga.title,
             releaseYear: manga.releaseYear,
@@ -69,6 +70,20 @@ function populateMangaTable() {
                 // add event listener to del button
                 const delMangaBtn = document.getElementById('del-manga-' + numOfMangas);
                 delMangaBtn.addEventListener('click', deleteManga);
+            } else if (i === len - 2) {
+                cell.innerHTML = typeof(mangaObj[key]) === "string" ? mangaObj[key].toUpperCase() : mangaObj[key];
+                cell.addEventListener('click', (e) => {
+                    // if last read cell is clicked - user can change last read value with PUT request
+                    console.log(mangaObj);
+                    const oldLastRead = e.target.innerHTML;
+                    let newLastRead = prompt("Please enter the last chapter that you read");
+                    if (newLastRead != undefined && parseInt(newLastRead) <= mangaObj.latestChapter) {
+                        e.target.innerHTML = newLastRead;
+                        editManga(e, mangaObj.mangaId, oldLastRead);
+                    } else {
+                        e.target.innerHTML = oldLastRead;
+                    }
+                });
             } else {
                 cell.innerHTML = typeof(mangaObj[key]) === "string" ? mangaObj[key].toUpperCase() : mangaObj[key];
                 cell.setAttribute('onclick', `window.location='readmanga.html?uri=key&id=${mangaObj.mangaId}&title=${mangaObj.title}&chapter=${mangaObj.lastRead}'`);    
