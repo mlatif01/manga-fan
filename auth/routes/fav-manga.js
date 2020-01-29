@@ -98,10 +98,12 @@ router.put('/', verify, async (req, res) => {
             }
         )
         res.send({mangaID: req.body.mangaId});
+        console.log("fav manga edited successfully");
     } catch (err) {
         console.log(err);
         res.status(400).send(err);
     }
+
 
 });
 

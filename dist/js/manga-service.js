@@ -125,5 +125,7 @@ async function editManga(e, mangaId, oldLastRead) {
     } catch (err) {
         console.log(err);
     }
+
+    window.location.reload(true);
     
 }
