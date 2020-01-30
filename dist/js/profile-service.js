@@ -18,6 +18,23 @@ async function getProfileData() {
     return data;
 }
 
+// get all profiles with username data
+async function getAllProfiles() {
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('user-token')
+        }
+    }
+
+    const response = await fetch(baseURL+'profile/otaku', options);
+    const data = await response.json();
+    
+    console.log(data);
+    return data;
+}
+
 async function postProfile(e) {
     // prevent page from navigating to another page on submit
     e.preventDefault();

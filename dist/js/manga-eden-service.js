@@ -2,7 +2,7 @@
 var baseMangaListURL = 'https://www.mangaeden.com/api/list/0';
 var baseURL = 'http://localhost:3000/api/';
 
-// Fetch Manga List only once, then set ID of manga in local storage
+// Fetch Manga List only once
 async function getMangaEdenChapter(title, chapter) {
     const options = {
         method: 'GET',
@@ -18,5 +18,5 @@ async function getMangaEdenChapter(title, chapter) {
     
     console.log("received manga chapter data");
     return data;
-
 }
+

@@ -2,18 +2,59 @@ const router = require('express').Router();
 const verify = require('./verifyToken');
 const User = require('../model/User');
 const FavManga = require('../model/Fav-Manga');
+const fetch = require('node-fetch');
 
 const { favMangaValidation } = require('../routes/validation.js');
 
+// Assist Function
+// Gets manga details for fav manga list
+async function getFullMangaDetails(title) {
+    const baseMangaListURL = 'https://www.mangaeden.com/api/list/0';
+    const baseMangaChapterURL = 'https://www.mangaeden.com/api/manga/';
+    const baseMangaPagesURL = 'https://www.mangaeden.com/api/chapter/'
+    const mangaInfo = {
+        author: undefined,
+        title: undefined,
+        releaseYear: undefined,
+        latestChapter: undefined,
+        lastRead: 1
+    }
 
-// User profile data - GET
+    // used to find chapters and latest chapter number
+    let mangaId = "";
+
+    // get full manga list
+    const listResponse = await fetch(baseMangaListURL);
+    let listData = await listResponse.json();
+    
+    // get manga info and assign to mangaInfo obj
+    listData.manga.forEach(manga => {
+        if (manga.t.toUpperCase() === title.toUpperCase()) {
+            mangaInfo.title = manga.t;
+            mangaId = manga.i;
+        }
+    });
+
+    // use manga id to find chapter id - we need this to find latest chapter
+    const mangaResponse = await fetch(baseMangaChapterURL + mangaId);
+    const mangaData = await mangaResponse.json();
+
+    // get correct manga data and store in manga obj
+    mangaInfo.author = mangaData.author;
+    mangaInfo.releaseYear = mangaData.released;
+    mangaInfo.latestChapter = mangaData.chapters_len;
+
+    return mangaInfo;
+}
+
+// fav manga data - GET
 router.get('/', verify, async (req, res) => {
     const favManga = await FavManga.findOne({userId: req.user._id});
     // console.log(favManga);
     res.send(favManga.mangas);
 })
 
-// Register - POST
+// add new fav manga - POST
 router.post('/', verify, async (req, res) => {
     
     // Get User Details
@@ -28,14 +69,9 @@ router.post('/', verify, async (req, res) => {
 
     // TODO - Don't allow duplicate manga entries to mangas array
     // TODO - Fetch (MangaEden) author, releaseYear, latestChapter, lastRead should be set to 1
-    const manga = {
-        author: req.body.author,
-        title: req.body.title,
-        releaseYear: req.body.releaseYear,
-        latestChapter: req.body.latestChapter,
-        lastRead: req.body.lastRead
-    }
+    const manga = await getFullMangaDetails(req.body.title);
     
+    // store the data to db
     if (!favMangaExists) {
         // Create a new fav manga entry
         const entry = new FavManga({
@@ -51,6 +87,7 @@ router.post('/', verify, async (req, res) => {
         }
     } 
     else {
+        // add to existing entry
         console.log("Existing Entry");
         const entry = favMangaExists;
         entry.mangas.push(manga);

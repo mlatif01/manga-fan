@@ -2,6 +2,7 @@ const router = require('express').Router();
 const verify = require('./verifyToken');
 const User = require('../model/User');
 const Profile = require('../model/Profile');
+const FavManga = require('../model/Fav-Manga');
 
 const { profileValidation } = require('../routes/validation.js');
 
@@ -15,6 +16,57 @@ router.get('/', verify, async (req, res) => {
         instagram: profile[0].instagram,
     });
 })
+
+// GET - all usernames and profiles
+// store them into an array of userobjects and send to client
+router.get('/otaku', verify, async (req, res) => {
+    const allUsers = await User.find();
+    let arrOfUsers = [];
+    allUsers.forEach(user => {
+        userObj = {
+            userId: user._id,
+            username: user.username,
+            about: undefined,
+            instagram: undefined,
+            favmangas: undefined
+        }
+        arrOfUsers.push(userObj);
+    });
+    // now we have user id and usernames, we need to get other info from profiles
+    const allProfiles = await Profile.find();
+    // Temp way of doing it - inefficient, n**2 solution very badddddd, but it works ;)
+    arrOfUsers.forEach(user => {
+        allProfiles.forEach(profile => {
+            if (user.userId.equals(profile.userId)) {
+                user.about = profile.about;
+                user.instagram = profile.instagram;
+            } 
+        });
+    });
+
+    // remove logged in user from arr - use != for type coercion
+    arrOfUsers = arrOfUsers.filter( user => user.userId != req.user._id);
+
+    // get all fav manga details
+    const allFavManga = await FavManga.find();
+
+    arrOfUsers.forEach(user => {
+        allFavManga.forEach(favmanga => {
+            if (user.userId.equals(favmanga.userId)) {
+                user.favmangas = favmanga.mangas;
+            }
+        });
+    });
+
+    try {
+        res.send(arrOfUsers);
+    } catch(err) {
+        res.status(400).send(err);
+    }
+    console.log("Profile sent!");
+
+});
+
 
 // Register - POST
 router.post('/', verify, async (req, res) => {

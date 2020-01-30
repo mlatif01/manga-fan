@@ -34,7 +34,7 @@ const favMangaValidation = (data) => {
     const schema = Joi.object({
         author: Joi.string().min(1).max(255).required(),
         title: Joi.string().min(1).max(255).required(),
-        releaseYear: Joi.number().required(),
+        releaseYear: Joi.number().min(1900).max(3000).required(),
         latestChapter: Joi.number().max(99999).required(),
         lastRead: Joi.number().max(99999).required()
     })

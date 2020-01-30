@@ -3,6 +3,8 @@
 if (localStorage.getItem('user-token') == null) {
     window.location.replace('index.html');
 } else {
+    // Set up logout 
+    setUpLogout();
     // Display Username
     getUserData().then( data => {
         userProfile = data;
@@ -30,9 +32,15 @@ const mangaForm = document.getElementById('manga-form');
 const mangaTableBody = document.getElementById('manga-table-body');
 
 // Functions
+
+
 function populateMangaTable() {
+    // use array of mangas to store in local storage
+    var mangaArr = [];
     // keep track of the number of mangas
     var numOfMangas = 0;
+    // fetch latest chapter when dashboard starts up
+    const latestChap = 0;
     // Loop through every manga item
     for (const manga of mangaData) {
         // Create an empty <tr> element and add to the 1st position of the table
@@ -45,8 +53,11 @@ function populateMangaTable() {
             lastRead: manga.lastRead,
             mangaId: manga._id
         }
+        // store mangaObj for later use in localStorage
+        mangaArr.push(mangaObj);
+        localStorage.setItem("mangaArr", JSON.stringify(mangaArr));
         console.log(mangaObj);
-        
+
         let row = mangaTableBody.insertRow();
         row.setAttribute('id', mangaObj.mangaId);
 
