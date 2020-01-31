@@ -10,11 +10,15 @@ async function getProfileData() {
         }
     }
 
-    // Send get request to server
-    const response = await fetch(baseURL+'profile', options);
-    const data = await response.json();
+    try {
+        // Send get request to server
+        const response = await fetch(baseURL+'profile', options);
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.log(err);
+    }
     
-    return data;
 }
 
 // get all profiles with username data
@@ -27,10 +31,14 @@ async function getAllProfiles() {
         }
     }
 
-    const response = await fetch(baseURL+'profile/otaku', options);
-    const data = await response.json();
-    
-    return data;
+    try {
+        const response = await fetch(baseURL+'profile/otaku', options);
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.log(err);
+    }
+
 }
 
 async function postProfile(e) {
@@ -66,12 +74,15 @@ async function postProfile(e) {
         // Send post request to server
         const response = await fetch(baseURL+'profile', options);
         const data = await response.json();
+        
+        setTimeout(()=>{
+            location.reload();
+        }, 1000)
+        toastr.success("Profile Added Successfully");
+        return data;
     } catch(err) {
         console.log(err);
     }
-
-    location.reload(true);
-
 }
 
 async function editProfile(e) {
@@ -103,16 +114,16 @@ async function editProfile(e) {
         })
     }
 
-    console.log("Client: " + options.body);
-
     try {
         // Send post request to server
         const response = await fetch(baseURL+'profile', options);
         const data = await response.json();
+        toastr.info("Profile Edited Successfully");
+
+        return data;
     } catch(err) {
         console.log(err);
     }
 
-    location.reload(true);
     
 }

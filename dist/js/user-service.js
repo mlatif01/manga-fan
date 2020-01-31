@@ -44,7 +44,6 @@ async function login(e) {
 
         toastr.success("Login Successful");
 
-        console.log("hello");
         // wait a few seconds so user can see toastr message
         setTimeout(() => {
             if (data.token != null) {
@@ -62,8 +61,6 @@ async function login(e) {
 async function register(e) {
     // prevent page from navigating to another page on submit
     e.preventDefault();
-
-    console.log("CALLED");
 
     // Check password fields are the same
     const password = formGroup[2].firstElementChild.value;
@@ -88,12 +85,21 @@ async function register(e) {
             password: password
         })
     }
-    
-    // Send post request to server
-    const response = await fetch(baseURL+'user/register', options);
-    const data = await response.json();
 
-    window.location.replace('login.html');
+    try {
+        // Send post request to server
+        const response = await fetch(baseURL+'user/register', options);
+        const data = await response.json();
+        toastr.success("Registration Successful");
+
+        setTimeout(() => {
+            window.location.replace('login.html');
+        }, 1000);
+    } catch (err) {
+        toastr.error("Registration Unsuccessful");
+        console.log(err);
+    }
+    
 }
 
 

@@ -71,7 +71,7 @@ router.get('/otaku', verify, async (req, res) => {
 // Register - POST
 router.post('/', verify, async (req, res) => {
     // Get User Details
-    // const user = await User.findById(req.user);
+    const user = await User.findById(req.user);
 
     // // Validate the data before we create a profile
     const {error} = profileValidation(req.body);
@@ -92,9 +92,10 @@ router.post('/', verify, async (req, res) => {
         const savedProfile = await profile.save();
         res.send({profile: profile.id});
     } catch(err) {
+        console.log("Profile not posted");
         res.status(400).send(err);
     }
-    console.log("Profile Edited");
+    console.log("Profile Posted");
 });
 
 // Edit Profile - PUT
@@ -122,7 +123,7 @@ router.put('/', verify, async (req, res) => {
                 }
             }
         )
-        res.send("Edited Successfully");
+        res.send({userId: req.user._id});
         console.log("Profile edited successfully");
     } catch (err) {
         console.log(err);

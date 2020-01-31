@@ -4,7 +4,6 @@ const submitButton = document.getElementById("submit-button");
 const profileForm = document.getElementById("profile-form");
 const formGroup = document.querySelectorAll('.form-group');
 const logoutButton = document.getElementById('logout');
-let editChanges = false;
 let userProfileData = undefined;
 
 // Functions
@@ -27,23 +26,18 @@ function startupProfile() {
     } else {
             // Retrieve Profile Data
             getProfileData().then( data => {
-            userProfileData = data;
-            // Populate input fields
-            populateInputs();
-    
-            // Change submit to edit if profile exists
-            if (userProfileData != null) {
-                submitButton.value = "Submit Changes";
-                editChanges = true;
-            }
-
-            // set up event handlers 
-            if (!editChanges) {
-                profileForm.addEventListener('submit', postProfile);
-            } else {
-                profileForm.addEventListener('submit', editProfile);
-            }
-         })
+                userProfileData = data;
+                // Populate input fields
+                populateInputs();
+        
+                // Change submit to edit if profile exists
+                if (userProfileData != null) {
+                    submitButton.value = "Submit Changes";
+                    profileForm.addEventListener('submit', editProfile);
+                } else {
+                    profileForm.addEventListener('submit', postProfile);
+                }
+             });
     }
 }
 
@@ -51,5 +45,6 @@ function startupProfile() {
 if (logoutButton != null) {
     logoutButton.addEventListener('click', onLogout);
 }
+
 
 startupProfile();
