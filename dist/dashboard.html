@@ -7,6 +7,8 @@
     <script src="https://kit.fontawesome.com/4562bbca97.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+
     <title>Welcome to MangaFan</title>
 </head>
 <body [data-app]="dashboard">
@@ -21,7 +23,7 @@
             <li><a href="otaku.html" class="user-item" id="readmanga">
                 <i class="fas fa-user"></i></i> Otaku</a>
             </li>
-            <li><a href="#" class="user-item" id="account">Account</a></li>
+            <li><a href="create-profile.html" class="user-item" id="profile">Profile</a></li>
             <li><a href="" id="logout">Logout</a></li>
         </ul>
     </nav>
@@ -116,9 +118,25 @@
     </footer>
 
     <!-- Scripts -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/util.js"></script>
     <script src="js/user-service.js"></script>
     <script src="js/manga-service.js"></script>
     <script src="js/dashboard.js"></script>
+
+    <!-- Prevent user from pressing submit manga multiple times-->
+    <script>
+        // $("body").on("submit", "form", function() {
+        //     $(this).submit(function() {
+        //         return false;
+        //     });
+        //     return true;
+        // });
+    </script>
 </body>
 </html>

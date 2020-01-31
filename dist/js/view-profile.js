@@ -77,8 +77,6 @@ function addToFav(e) {
     mangaTitleFav = btn.parentNode.getElementsByTagName("h4")[0].innerHTML;
     // call postmanga
     postManga(e);
-    // reload page
-    window.location.reload();
 }
 
 setupViewProfile();

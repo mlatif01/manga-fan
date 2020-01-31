@@ -12,11 +12,15 @@ async function getMangaEdenChapter(title, chapter) {
         }
     };
 
-    // Fetch manga list
-    const response = await fetch(baseURL+'mangaeden'+`/${title},${chapter}`, options);
-    const data = await response.json();
-    
-    console.log("received manga chapter data");
-    return data;
+    try {
+        // Fetch manga list
+        const response = await fetch(baseURL+'mangaeden'+`/${title},${chapter}`, options);
+        const data = await response.json();
+
+        console.log("received manga chapter data");
+        return data;
+    } catch (err) {
+        console.log(err);
+    }
 }
 

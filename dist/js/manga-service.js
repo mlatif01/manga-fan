@@ -10,10 +10,14 @@ async function getMangaData() {
         }
     }
 
-    // Send get request to server
-    const response = await fetch(baseURL+'favmanga', options);
-    const data = await response.json();
-    return data;
+    try {
+        // Send get request to server
+        const response = await fetch(baseURL+'favmanga', options);
+        const data = await response.json();
+        return data;       
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 async function postManga(e) {
@@ -55,15 +59,16 @@ async function postManga(e) {
     }
 
     try {
-    // Send post request to server
-    const response = await fetch(baseURL+'favmanga', options);
-    const data = await response.json();
-    console.log(data);
+        // Send post request to server
+        const response = await fetch(baseURL+'favmanga', options);
+        const data = await response.json();
+        toastr.success("Manga Added Successfully");
+        setTimeout(()=>{
+            location.reload();
+        }, 1000)
     } catch(err) {
         console.log(err);
     }
-
-    location.reload(true);
 
 }
 
@@ -92,12 +97,13 @@ async function deleteManga(e) {
             // Send post request to server
             const response = await fetch(baseURL+'favmanga', options);
             const data = await response.json();
-            console.log(data);
+            toastr.info("Manga Deleted Successfully");
+            setTimeout(()=>{
+                location.reload();
+            }, 1000)
         } catch(err) {
             console.log(err);
-        }
-    
-        location.reload(true);
+        }    
     }
 }
 
@@ -123,11 +129,12 @@ async function editManga(e, mangaId, oldLastRead) {
         // Send post request to server
         const response = await fetch(baseURL+'favmanga', options);
         const data = await response.json();
-        console.log(data);
+        toastr.info("Manga Edited Successfully");
+        setTimeout(()=>{
+            location.reload();
+        }, 1000)
     } catch (err) {
         console.log(err);
     }
-
-    window.location.reload(true);
     
 }

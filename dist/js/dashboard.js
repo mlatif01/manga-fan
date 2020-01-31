@@ -36,7 +36,6 @@ const mangaTableBody = document.getElementById('manga-table-body');
 
 // Functions
 
-
 function populateMangaTable() {
     // use array of mangas to store in local storage
     var mangaArr = [];
