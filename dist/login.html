@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/4562bbca97.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <title>Welcome to MangaFan</title>
 </head>
 <body [data-app]="login">
@@ -33,10 +34,12 @@
 
         <form class="form" id="login-form">
             <div class="form-group">
-                <input type="email" placeholder="Email" required>
+                <input id="email" type="email" placeholder="Email">
+                <small>Error Message</small>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Password" minlength="6" required>
+                <input id="password" type="password" placeholder="Password">
+                <small>Error Message</small>
             </div>
             <input id="submit" type="submit" value="Login" class="btn btn-primary">
         </form>
@@ -56,6 +59,12 @@
         </div>
     </footer>
 
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/user-service.js"></script>
     <script src="js/login.js"></script>
 </body>

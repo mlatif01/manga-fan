@@ -37,19 +37,33 @@ async function login(e) {
         })
     }
     
-    // Send post request to server
-    const response = await fetch(baseURL+'user/login', options);
-    const data = await response.json();
-    
-    if (data.token != null) {
-        localStorage.setItem('user-token', data.token);
-        window.location.replace('dashboard.html');
+    try {
+        // Send post request to server
+        const response = await fetch(baseURL+'user/login', options);
+        const data = await response.json();
+
+        toastr.success("Login Successful");
+
+        console.log("hello");
+        // wait a few seconds so user can see toastr message
+        setTimeout(() => {
+            if (data.token != null) {
+                localStorage.setItem('user-token', data.token);
+                window.location.replace('dashboard.html');
+            }
+        }, 1000);
+
+    } catch (err) {
+        toastr.error("Login Unsuccessful");
+        console.log(err);
     }
 }
 
 async function register(e) {
     // prevent page from navigating to another page on submit
     e.preventDefault();
+
+    console.log("CALLED");
 
     // Check password fields are the same
     const password = formGroup[2].firstElementChild.value;
@@ -84,7 +98,6 @@ async function register(e) {
 
 
 function onLogout() {
-    console.log("clear");
     localStorage.clear();
     window.location.replace('index.html');
 }

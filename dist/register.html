@@ -33,16 +33,20 @@
 
         <form class="form" id="register-form">
             <div class="form-group">
-                <input type="text" placeholder="Username" required>
+                <input id="username" type="text" placeholder="Username" >
+                <small>Error Message</small>
             </div>
             <div class="form-group">
-                <input type="email" placeholder="Email" required>
+                <input type="email" placeholder="Email" id="email">
+                <small>Error Message</small>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Password" minlength="6" required>
+                <input id="password" type="password" placeholder="Password">
+                <small>Error Message</small>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Confirm Password" minlength="6" required>
+                <input id="confirm-password" type="password" placeholder="Confirm Password">
+                <small>Error Message</small>
             </div>
             <input type="submit" value="Register" class="btn btn-primary">
         </form>

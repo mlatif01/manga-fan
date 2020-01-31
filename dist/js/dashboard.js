@@ -21,6 +21,9 @@ if (localStorage.getItem('user-token') == null) {
 
 let mangaData = undefined;
 
+// hack to reset variable in view profile
+let mangaTitleFav = undefined;
+
 // DOM Elements
 const usernameHeading = document.getElementById('username-heading');
 const logoutButton = document.getElementById('logout');
@@ -56,8 +59,7 @@ function populateMangaTable() {
         // store mangaObj for later use in localStorage
         mangaArr.push(mangaObj);
         localStorage.setItem("mangaArr", JSON.stringify(mangaArr));
-        console.log(mangaObj);
-
+        
         let row = mangaTableBody.insertRow();
         row.setAttribute('id', mangaObj.mangaId);
 

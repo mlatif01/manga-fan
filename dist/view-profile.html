@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="referrer" content="no-referrer"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -28,49 +27,39 @@
     </nav>
 
     <section class="container">
-        <h1 class="large text-primary">
-            Read Manga
-        </h1>
-        <p class="lead">
-            <i class="fas fa-user"></i> Stay up to date with your favourite manga!
-        </p>
+        <a href="otaku.html" class="btn">Back To Profiles</a>
 
-        <!-- Manga Viewer -->
-        <div class="manga-container">
-
-            <div class="manga-header">
-                <h1 class="medium capitalize" style="text-align: center;" id="manga-header-heading">
-                    
-                </h1>
-            </div>
-
-            <div class="manga-content">
-                <div class="manga-prev">
-                    <a href="#" class="btn btn-danger">
-                        <i class="fas fa-chevron-circle-left fa-2x"></i>                
-                    </a>
-                </div>
-    
-                <div class="manga-body">
-                    <div class="img-container">
-                        <img id="manga-img" src="img/loader.gif" alt="">
-                    </div>
-                </div>
-    
-                <div class="manga-next">
-                    <a href="#" class="btn btn-success">
-                        <i class="fas fa-chevron-circle-right fa-2x"></i>                
+        <div class="profile-grid my-1">
+            <!-- Top -->
+            <div class="profile-top bg-primary p-2">
+                <img class="round-img" alt="profile" src="https://cdn.pixabay.com/photo/2016/03/31/14/47/avatar-1292817_960_720.png" alt="">
+                <h1 id="username-top" class="large"></h1>
+                <div class="icons my-1">
+                    <a href="#" id="instagram-link">
+                        <i class="fab fa-instagram fa-3x"></i>
                     </a>
                 </div>
             </div>
+            <!-- About -->
+            <div class="profile-about bg-light p-2">
+                <h2 class="text-primary" id="about-heading">Username's Bio</h2>
+                <div class="line"></div>
+                <p id="about-bio">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, esse.</p>
+            </div>
+            <!-- Fav Manga -->
+            <div class="profile-favmanga">
+                <h2 class="text-primary my-1">
+                    <i class="fas fa-book-reader"></i> Fav Mangas
+                </h2>
 
-            
+                <!-- Add Fav Manga List here -->
+
+
         </div>
-
 
     </section>
 
-    <!-- <footer class="footer">
+    <footer class="footer">
         <div class="footer-cols">
             <ul>
                 <li><a href="#">Contact Us</a></li>
@@ -81,10 +70,11 @@
         <div class="footer-bottom my-1">
             Copyright &copy 2020 MangaFan
         </div>
-    </footer> -->
-
-    <script src="js/manga-eden-service.js"></script>
+    </footer>
     <script src="js/util.js"></script>
-    <script src="js/read-manga.js"></script>
+    <script src="js/profile-service.js"></script>
+    <script src="js/user-service.js"></script>
+    <script src="js/manga-service.js"></script>
+    <script src="js/view-profile.js"></script>
 </body>
 </html>

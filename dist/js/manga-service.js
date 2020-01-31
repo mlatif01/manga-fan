@@ -27,9 +27,15 @@ async function postManga(e) {
         lastRead: 1
     };
 
-    // parse info form input fields
-    for (let i = 0, len = mangaInputs.length; i < len; i++) {
-        mangaData[mangaInputs[i].name] = mangaInputs[i].value;
+    if (mangaInputs !== undefined) {
+        // parse info form input fields
+        for (let i = 0, len = mangaInputs.length; i < len; i++) {
+            mangaData[mangaInputs[i].name] = mangaInputs[i].value;
+        }
+    }
+
+    if (mangaTitleFav !== undefined) {
+        mangaData.title = mangaTitleFav;
     }
 
     const options = {

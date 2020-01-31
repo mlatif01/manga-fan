@@ -34,7 +34,7 @@ router.get('/otaku', verify, async (req, res) => {
     });
     // now we have user id and usernames, we need to get other info from profiles
     const allProfiles = await Profile.find();
-    // Temp way of doing it - inefficient, n**2 solution very badddddd, but it works ;)
+    // Temp way of doing it - inefficient, n**2 solution 
     arrOfUsers.forEach(user => {
         allProfiles.forEach(profile => {
             if (user.userId.equals(profile.userId)) {
@@ -71,9 +71,9 @@ router.get('/otaku', verify, async (req, res) => {
 // Register - POST
 router.post('/', verify, async (req, res) => {
     // Get User Details
-    const user = await User.findById(req.user);
+    // const user = await User.findById(req.user);
 
-    // // Validate the data before we create a user
+    // // Validate the data before we create a profile
     const {error} = profileValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -97,12 +97,37 @@ router.post('/', verify, async (req, res) => {
     console.log("Profile Edited");
 });
 
-// Edit - PUT
+// Edit Profile - PUT
 router.put('/', verify, async (req, res) => {
+    // Get user details
     const user = await User.findById(req.user);
-    const userId = user._id;
 
-    
+    // // Validate the data before we create a profile
+    const {error} = profileValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    try {
+        const entry = await Profile.updateOne(
+            // match criteria
+            {
+                userId: req.user._id,
+            },
+
+            // update first match
+            {
+                $set: {
+                    about: req.body.about,
+                    age: req.body.age,
+                    instagram: req.body.instagram
+                }
+            }
+        )
+        res.send("Edited Successfully");
+        console.log("Profile edited successfully");
+    } catch (err) {
+        console.log(err);
+        res.status(400).send(err);
+    }
 });
 
 module.exports = router;

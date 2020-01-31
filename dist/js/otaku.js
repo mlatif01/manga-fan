@@ -13,6 +13,7 @@ async function setupOtaku() {
         // retrieve profile data
         const arrOfUsers = await getAllProfiles();
 
+        // populate profile cards with user info
         populateProfileCards(arrOfUsers);
     };
 }
@@ -24,14 +25,12 @@ function populateProfileCards(arrOfUsers) {
     for (userProfile of arrOfUsers) {
         // counter variable
         profiles.innerHTML += `
-            <div class="profile bg-light" style="border-radius: 10px;">
+            <div id="${userProfile.userId}" class="profile bg-light" style="border-radius: 10px;">
                 <img src="https://cdn.pixabay.com/photo/2016/03/31/14/47/avatar-1292817_960_720.png" 
                     alt="dev" class="round-img">
                 <div>
                     <h2>${userProfile.username}</h2>
-                    <p>${userProfile.about}</p>
-                    <p>${userProfile.instagram}</p>
-                    <a href="#" class="btn btn-primary my-2">View Profile</a>
+                    <a href="#" class="btn btn-primary btn-${i} my-2">View Profile</a>
                 </div>
                 <div>
                     <ul id="fav-manga-list-${i}">
@@ -52,9 +51,11 @@ function populateProfileCards(arrOfUsers) {
                 ` 
             }
         }
+        // target edit profile button and add onclick attribute
+        let editProfileBtn = document.querySelector(`.profiles .btn-${i}`);
+        editProfileBtn.setAttribute('onclick', `window.location='view-profile.html?uri=key&id=${userProfile.userId}'`); 
         // increment counter
         i += 1;
-        console.log(i);
     }
 }
 
