@@ -48,8 +48,6 @@ function setErrorFor(input, message) {
 
 function setSuccessFor(input) {
     let formGroup = input.parentElement; // form-group
-    const small = formGroup.querySelector('small');
-
     // add success class
     formGroup.className = "form-group success";
 }

@@ -63,8 +63,6 @@ router.get('/otaku', verify, async (req, res) => {
     } catch(err) {
         res.status(400).send(err);
     }
-    console.log("Profile sent!");
-
 });
 
 
@@ -80,6 +78,8 @@ router.post('/', verify, async (req, res) => {
     // Checking if the user has a profile
     const profileExists = await Profile.findOne({userId: req.user._id});
     if (profileExists) return res.status(400).send('Profile already exists');
+
+    console.log("HERE");
 
     // Create a new user
     const profile = new Profile({

@@ -16,6 +16,7 @@ async function getProfileData() {
         const data = await response.json();
         return data;
     } catch (err) {
+        res.status(400).send(err);
         console.log(err);
     }
     

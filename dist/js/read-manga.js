@@ -25,6 +25,9 @@ async function startup() {
     window.location.replace('index.html');
     // Set up the page
     } else {
+        // set up logout button
+        setUpLogout();
+        
         // Display Manga Name, chapter and pn
         updateChapterInfo();
 

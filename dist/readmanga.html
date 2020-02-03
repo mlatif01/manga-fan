@@ -17,6 +17,9 @@
             <a href="dashboard.html">
                 <i class="fab fa-cloudversify"></i> MangaFan
             </a>
+            <span id="back-dash"><i class="fas fa-angle-double-left"></i>
+                <p>Back To Dashboard</p>
+            </span>
         </h1>
         <ul>
             <li><a href="otaku.html" class="user-item" id="readmanga">
@@ -28,9 +31,26 @@
     </nav>
 
     <section class="container">
-        <h1 class="large text-primary">
-            Read Manga
-        </h1>
+        <div id="manga-heading">
+            <h1 class="large text-primary">
+                Read Manga
+            </h1>
+
+            <div id="audio-container">
+                <audio src="./resources/A L E X - Up in the Heat.mp3" controls autoplay="false">
+                    <embed 
+                        src="./resources/A L E X - Up in the Heat.mp3"
+                        width="300"
+                        height="90"
+                        loop="false"
+                        autostart="false">
+                </audio>
+                <p>
+                    Listen to A L E X - Up in the Heat
+                </p>	
+            </div>
+
+        </div>
         <p class="lead">
             <i class="fas fa-user"></i> Stay up to date with your favourite manga!
         </p>
@@ -67,10 +87,9 @@
             
         </div>
 
-
     </section>
 
-    <!-- <footer class="footer">
+    <footer class="footer">
         <div class="footer-cols">
             <ul>
                 <li><a href="#">Contact Us</a></li>
@@ -81,7 +100,7 @@
         <div class="footer-bottom my-1">
             Copyright &copy 2020 MangaFan
         </div>
-    </footer> -->
+    </footer>
 
     <script src="js/manga-eden-service.js"></script>
     <script src="js/util.js"></script>

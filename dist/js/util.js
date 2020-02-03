@@ -35,3 +35,15 @@ function setUpLogout() {
         });
     }
 }
+
+// When user scrolls down hide the navbar. When user scrols up, show navbar
+let prevScrollPos = window.pageYOffset;
+window.onscroll = () => {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollPos > currentScrollPos) {
+        document.querySelector('.navbar').style.top = "0";
+    } else {
+        document.querySelector('.navbar').style.top = "-50px";
+    }
+    prevScrollPos = currentScrollPos;
+}

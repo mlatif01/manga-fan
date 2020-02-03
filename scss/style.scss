@@ -30,6 +30,10 @@ body {
     color: #333;
 }
 
+#audio-player {
+    @include set-background($primary-color);
+}
+
 // index stretch overlay
 #index-body {
     align-items: inherit;
@@ -90,6 +94,8 @@ img {
     top: 0;
     border-bottom: solid 1px $light-color;
     opacity: 0.9;
+    background-image: linear-gradient(to left, $dark-color, $primary-color);
+    transition: top 0.3s;
 
     a {
         color: #fff;
@@ -105,6 +111,15 @@ img {
         display: flex;
         margin-right: 3rem;
     }
+
+    #back-dash {
+        display: inline-flex;
+        p {
+            font-size: small;
+            padding-left: 0.5rem;
+            padding-top: 0.2rem;
+        }
+    }
 }
 
 // Landing
@@ -112,6 +127,10 @@ img {
     position: relative;
     background: url('../img/showcase.jpg') no-repeat;
     height: 100vh;
+    box-shadow: inset 60px 50px 125px #333,
+        inset -60px -50px 125px #333;
+    // box-shadow: inset 120px 100px 250px #000000,
+    // inset -120px -100px 250px #000000;
 
     &-inner {
         color: #fff;
@@ -134,6 +153,24 @@ img {
         float: right;
     }   
 }
+
+// Dashboard
+#dashboard-heading, #manga-heading, #otaku-heading {
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+        margin-top: 1rem;
+        display: table;
+    }
+}
+
+#audio-container {
+    p {
+        padding-left: 1rem;
+    }
+}
+
 
 // Otaku Profile 
 .profiles {
@@ -277,10 +314,11 @@ footer {
     }   
 }
 
-// Manga Container
+// Manga Reader
+
 .manga-container {
     border-top: solid 2px $light-color;
-    border-bottom: solid 2px $light-color;
+    // border-bottom: solid 2px $light-color;
     padding: 0 0 4rem 0;
     position: relative;
 
