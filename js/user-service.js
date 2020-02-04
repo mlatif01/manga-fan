@@ -1,5 +1,5 @@
 // HTTP Request Methods for User
-var baseURL = 'http://manga-fan.herokuapp.com/api/';
+var baseURL = 'https://manga-fan.herokuapp.com/api/';
 
 // Functions
 async function getUserData() {
