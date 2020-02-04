@@ -46,6 +46,7 @@ async function login(e) {
     try {
         // Send post request to server
         const response = await fetch(baseURL+'user/login', options);
+        console.log("SENT");
         const data = await response.json();
 
         toastr.success("Login Successful");
