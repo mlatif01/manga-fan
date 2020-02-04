@@ -56,6 +56,7 @@ router.get('/', verify, async (req, res) => {
 
 // add new fav manga - POST
 router.post('/', verify, async (req, res) => {
+    let flag = true;
     
     // Get User Details
     const user = await User.findById(req.user);
@@ -64,15 +65,34 @@ router.post('/', verify, async (req, res) => {
     const {error} = favMangaValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    // Checking if the user has fav manga entry
+    // Checking if the user has fav manga collections entry
     const favMangaExists = await FavManga.findOne({userId: req.user._id});
 
     // TODO - Don't allow duplicate manga entries to mangas array
-    // TODO - Fetch (MangaEden) author, releaseYear, latestChapter, lastRead should be set to 1
+    // loop through array, check if manga is already there, if it is return error
+    // const mangaEntryExists = await FavManga.findOne(
+    //     {
+    //         userId: req.user._id,
+    //         mangas: { $elemMatch: {title: req.body.title}}
+    //     }
+    // );
+    // if (mangaEntryExists) {
+    //     console.log("Manga Already in List");
+    //     return res.status(400).send("Manga Already in List");
+    // } 
+    favMangaExists.mangas.forEach((entry)=>{
+        if (entry.title.toLowerCase() === req.body.title.toLowerCase()) {
+            console.log("Manga Already Here!");
+            flag = false;
+            return res.status(400).send("Manga Already In List");
+        }
+    });
+
+    // get full manga details from Manga Eden API
     const manga = await getFullMangaDetails(req.body.title);
     
     // store the data to db
-    if (!favMangaExists) {
+    if (!favMangaExists && flag) {
         // Create a new fav manga entry
         const entry = new FavManga({
             userId: user._id
@@ -86,7 +106,7 @@ router.post('/', verify, async (req, res) => {
             res.status(400).send(err);
         }
     } 
-    else {
+    else if (favMangaExists && flag) {
         // add to existing entry
         console.log("Existing Entry");
         const entry = favMangaExists;

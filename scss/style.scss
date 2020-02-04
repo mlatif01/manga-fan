@@ -30,10 +30,6 @@ body {
     color: #333;
 }
 
-#audio-player {
-    @include set-background($primary-color);
-}
-
 // index stretch overlay
 #index-body {
     align-items: inherit;
@@ -377,4 +373,97 @@ footer {
     .landing .landing-upper img {
         width: 70%;
     }
+
+    // .hide-sm {
+    //     display: none;
+    // }
+
+    // #back-dash {
+    //     p {
+    //         display: none;
+    //     }
+    // }
+
+    // .profiles {
+    //     display: grid;
+    //     grid-template-columns: 1fr;
+    // }
+}
+
+@media screen and (max-width: 768px) {
+    .landing {
+        background-size: 250%;
+
+        &-inner {
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .navbar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+
+        ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        i {
+            display: none;
+        }
+    }
+
+    .hide-sm {
+        display: none;
+    }
+
+    #back-dash {
+        p {
+            display: none;
+        }
+    }
+
+    // table 
+    .table {
+        
+        th, td {
+            padding: 0.1rem;
+            text-align: left;
+            font-size: 0.7rem;
+        }
+
+        th {
+            background: $light-color;
+        }
+
+        tr {
+            width: 100vw;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $light-color;
+            }
+        }
+    }
+
+    // manga reader
+    #manga-heading{
+        p {
+            display: none;
+        }
+    }
+
+    // otaku
+    #dashboard-heading .btn, #manga-heading .btn, #otaku-heading .btn {
+        display: none;
+    }
+
+    .profiles {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
 }

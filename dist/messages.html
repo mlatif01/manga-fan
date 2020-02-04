@@ -13,7 +13,7 @@
     <!-- Navigation-->
     <nav class="navbar bg-dark">
         <h1>
-            <a href="dashboard.html">
+            <a href="dashboard.html" class="user-item" id="dashboard">
                 <i class="fab fa-cloudversify"></i> MangaFan
             </a>
         </h1>
@@ -26,25 +26,28 @@
         </ul>
     </nav>
 
-    <!-- Otaku Profiles -->
     <section class="container">
-        <div class="" id="otaku-heading">
-            <h1 class="large text-primary">
-                Otaku
-            </h1>
-            <a href="dashboard.html" class="btn hide-sm">Back To Dashboard</a>
-        </div>
+        <h1 class="large text-primary">
+            Messages
+        </h1>
         <p class="lead">
-            <i class="fab fa-connectdevelop"></i> Browse and connect with other manga fans!
+            <i class="fas fa-user"></i> Chat to other users!
         </p>
 
-        <div class="profiles">
-            
+        <div id="messages-container">
+            <h2>Your Messages</h2>
+
+            <div class="message-box-user">
+                <p>Hey did you read the latest Naruto!</p>
+                <span class="time-user">11:00</span>
+            </div>
+
+            <div class="message-box-other">
+                <p>Hey did you read the latest Naruto!</p>
+                <span class="time-other">11:30</span>
+            </div>
         </div>
-
-
     </section>
-
 
     <footer class="footer">
         <div class="footer-cols">
@@ -59,9 +62,6 @@
         </div>
     </footer>
 
-    <script src="js/util.js"></script>
-    <script src="js/profile-service.js"></script>
-    <script src="js/user-service.js"></script>
-    <script src="js/otaku.js"></script>
+    <script src=""></script>
 </body>
 </html>

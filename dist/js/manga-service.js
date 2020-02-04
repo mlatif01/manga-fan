@@ -16,6 +16,7 @@ async function getMangaData() {
         const data = await response.json();
         return data;       
     } catch (err) {
+        toastr.warning("Manga Not Available");
         console.log(err);
     }
 }
@@ -67,7 +68,8 @@ async function postManga(e) {
             location.reload();
         }, 1000)
     } catch(err) {
-        console.log(err);
+        console.log();
+        toastr.warning("Manga Could Not Be Added");
     }
 
 }

@@ -67,6 +67,10 @@ function populateMangaTable() {
         for (let i = 0, len = Object.keys(manga).length - 1; i < len; i++) {
             // Insert new cells (<td> elements) in <tr>
             let cell = row.insertCell();
+            // add hide-sm to cell if it is - author i = 0, releaseYear i = 2
+            if (i == 0 || i == 2) {
+                cell.setAttribute("class", "hide-sm");
+            }
             // Get keys for manga 
             let key = Object.keys(mangaObj)[i];
 
@@ -144,5 +148,7 @@ document.addEventListener("keyup", e => {
     document.querySelector(".modal.is-visible").classList.remove(modalIsVisible);
   }
 });
+
+
 
 
