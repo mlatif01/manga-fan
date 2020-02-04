@@ -36,7 +36,7 @@ app.use('/api/mangaeden', mangaEdenRoute);
 
 // Run server on the specified port
 // app.listen(3000, () => console.log('Server up and running'));
+
 app.listen(process.env.PORT || 3000, function(){
     console.log('Server running on 3000...');
 });
-
