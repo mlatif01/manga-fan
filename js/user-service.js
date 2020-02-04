@@ -1,5 +1,5 @@
 // HTTP Request Methods for User
-var baseURL = 'http://localhost:3000/api/';
+var baseURL = 'http://manga-fan.herokuapp.com/api/';
 
 // Functions
 async function getUserData() {
@@ -24,6 +24,7 @@ async function getUserData() {
 }
 
 async function login(e) {
+    console.log(baseURL);
     // prevent page from navigating to another page on submit
     e.preventDefault();
 

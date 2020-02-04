@@ -39,4 +39,5 @@ app.use('/api/mangaeden', mangaEdenRoute);
 
 app.listen(process.env.PORT || 3000, function(){
     console.log('Server running on 3000...');
+    console.log(process.env.PORT);
 });

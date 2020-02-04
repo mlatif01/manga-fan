@@ -2,8 +2,6 @@
 const formGroup = document.querySelectorAll('.form-group');
 const loginForm = document.getElementById('login-form');
 
-var baseURL = 'http://localhost:3000/api/';
-
 // Functions
 function checkInputs(e) {
     // get the values from the inputs
