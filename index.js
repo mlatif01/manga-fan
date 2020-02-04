@@ -20,6 +20,7 @@ mongoose.connect(
     () => console.log('connected to db!')
 );
 
+
 // Enable All CORS requests
 app.use(cors());
 
@@ -32,12 +33,14 @@ app.use('/api/posts', postRoute);
 app.use('/api/profile', profileRoute);
 app.use('/api/favmanga', favMangaRoute);
 app.use('/api/mangaeden', mangaEdenRoute);
-
+// app.use('/', express.static(path.join(__dirname)));
 
 // Run server on the specified port
-// app.listen(3000, () => console.log('Server up and running'));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "index.html"));
+});
 
 app.listen(process.env.PORT || 3000, function(){
     console.log('Server running on 3000...');
-    console.log(process.env.PORT);
 });
