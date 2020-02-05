@@ -42,6 +42,6 @@ app.use('/api/mangaeden', mangaEdenRoute);
 //     res.sendFile(path.resolve(__dirname, "index.html"));
 // });
 
-app.listen(port, function(){
+app.listen(port || 3000, function(){
     console.log(`Server running on ${port}...`);
 });
