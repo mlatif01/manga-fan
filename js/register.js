@@ -63,7 +63,6 @@ function checkInputs(e) {
 
     // if all field inputs are valid - submit POST request to server
     if (validUsername && validPassword && validEmail && validConfirmPassword) {
-        console.log("OK");
         register(e);
     }
 

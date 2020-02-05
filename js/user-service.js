@@ -85,11 +85,11 @@ async function register(e) {
             'Content-Type': 'application/json'
         },
         // Serialize json data
-        body: JSON.stringify({
+        body: {
             username: username,
             email: email,
             password: password
-        })
+        }
     }
 
     try {
