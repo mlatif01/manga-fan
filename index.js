@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 // Import Routes
 const authRoute = require('./routes/auth');
@@ -42,6 +42,6 @@ app.use('/api/mangaeden', mangaEdenRoute);
 //     res.sendFile(path.resolve(__dirname, "index.html"));
 // });
 
-app.listen(port || 3000, function(){
+app.listen(port, function(){
     console.log(`Server running on ${port}...`);
 });
