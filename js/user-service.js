@@ -1,6 +1,6 @@
 // HTTP Request Methods for User
-// var baseURL = 'http://localhost:3000/api/';
-var baseURL = 'api/';
+var baseURL = 'http://localhost:3000/api/';
+// var baseURL = 'api/';
 
 // Functions
 async function getUserData() {
@@ -85,11 +85,11 @@ async function register(e) {
             'Content-Type': 'application/json'
         },
         // Serialize json data
-        body: {
+        body: JSON.stringify({
             username: username,
             email: email,
             password: password
-        }
+        })
     }
 
     try {

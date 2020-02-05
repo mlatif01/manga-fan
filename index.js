@@ -29,7 +29,8 @@ app.use(cors());
 app.use(express.json());
 
 // Router Middleware
-app.use('/', express.static(path.join(__dirname)));
+app.use('/', express.static(__dirname));
+
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/profile', profileRoute);
