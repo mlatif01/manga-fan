@@ -16,7 +16,7 @@ dotenv.config();
 
 // Connect to DB
 mongoose.connect(
-    process.env.DB_CONNECT,
+    process.env.MONGODB_URI,
     { useNewUrlParser: true },
     () => console.log('connected to db!')
 );
