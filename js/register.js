@@ -8,8 +8,6 @@ const confirmPassword = document.getElementById('confirm-password');
 
 console.log(username.value);
 
-var baseURL = 'http://localhost:3000/api/';
-
 // Functions
 
 function checkInputs(e) {
