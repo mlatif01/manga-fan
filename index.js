@@ -29,18 +29,18 @@ app.use(cors());
 app.use(express.json());
 
 // Router Middleware
+app.use('/', express.static(path.join(__dirname)));
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/profile', profileRoute);
 app.use('/api/favmanga', favMangaRoute);
 app.use('/api/mangaeden', mangaEdenRoute);
-// app.use('/', express.static(path.join(__dirname)));
 
 // Run server on the specified port
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "index.html"));
-// });
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "index.html"));
+});
 
 app.listen(port, function(){
     console.log(`Server running on ${port}...`);
