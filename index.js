@@ -29,6 +29,7 @@ app.use(cors());
 app.use(express.json());
 
 // Router Middleware
+// in charge of sending static files requests to the client
 app.use('/', express.static(__dirname));
 
 app.use('/api/user', authRoute);
@@ -37,12 +38,13 @@ app.use('/api/profile', profileRoute);
 app.use('/api/favmanga', favMangaRoute);
 app.use('/api/mangaeden', mangaEdenRoute);
 
-// Run server on the specified port
 
+// It's in charge of sending the main index.html file back to the client if it didn't receive a request it recognized otherwise.
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "index.html"));
 });
 
+// Run server on the specified port
 app.listen(port, function(){
     console.log(`Server running on ${port}...`);
 });
