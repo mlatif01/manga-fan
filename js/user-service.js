@@ -25,7 +25,6 @@ async function getUserData() {
 }
 
 async function login(e) {
-    console.log(baseURL);
     // prevent page from navigating to another page on submit
     e.preventDefault();
 
