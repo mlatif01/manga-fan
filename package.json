@@ -25,5 +25,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlatif01/manga-fan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mlatif01/manga-fan/issues"
+  },
+  "homepage": "https://github.com/mlatif01/manga-fan#readme"
 }

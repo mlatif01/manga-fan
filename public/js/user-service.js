@@ -1,5 +1,5 @@
 // HTTP Request Methods for User
-var baseURL = 'http://localhost:5000/api/';
+var baseURL = 'http://localhost:3000/api/';
 // var baseURL = 'api/';
 
 // Functions
