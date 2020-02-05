@@ -1,5 +1,5 @@
 // HTTP Request Methods for Fav Manga
-var baseURL = 'http://localhost:3000/api/';
+var baseURL = 'http://localhost:5000/api/';
 
 async function getMangaData() {
     const options = {

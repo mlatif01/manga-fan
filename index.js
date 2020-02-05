@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 // Import Routes
 const authRoute = require('./routes/auth');
@@ -30,7 +30,7 @@ app.use(express.json());
 
 // Router Middleware
 // in charge of sending static files requests to the client
-app.use(express.static(__dirname));
+app.use(express.static.join((__dirname, "public")));
 
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
