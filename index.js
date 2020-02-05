@@ -30,7 +30,7 @@ app.use(express.json());
 
 // Router Middleware
 // in charge of sending static files requests to the client
-app.use('/', express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
