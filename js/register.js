@@ -6,8 +6,6 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
 
-console.log(username.value);
-
 // Functions
 
 function checkInputs(e) {
