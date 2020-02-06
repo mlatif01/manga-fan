@@ -1,13 +1,9 @@
 # manga-fan
 
-To run the app locally.
-
+Run App Locally
+---
 Download or clone repo.
 
-in root directory. run 'npm install' followed by 'npm start'.
-This will run the web server and connec the DB.
-
-I use live server to run the client side html. However you can also open public/index.html.
-
-(Having trouble deploying to heroku but will be working on that, as can be seen by the many commits
- in the last few days).
+Note: run 'npm install' followed by 'npm start' using the command line (in root directory of project).
+This will install node_modules, then run the web server and connect to the DB.
+Open index.html.
