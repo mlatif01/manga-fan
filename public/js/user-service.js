@@ -1,6 +1,6 @@
 // HTTP Request Methods for User
-// var baseURL = 'http://localhost:3000/api/';
-var baseURL = "api/";
+var baseURL = "http://localhost:3000/api/";
+// var baseURL = "api/";
 
 // Functions
 async function getUserData() {
