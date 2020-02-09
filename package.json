@@ -1,7 +1,7 @@
 {
-  "name": "auth",
+  "name": "manga-fan-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Run App Locally --- Download or clone repo.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

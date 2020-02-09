@@ -9,41 +9,40 @@ const aboutHeading = document.getElementById("about-heading");
 const aboutBio = document.getElementById("about-bio");
 const favMangaDiv = document.querySelector(".profile-favmanga");
 
-
 // -- Functions
 
 // Setup Function
 // Authorisation to allow user to access certain resources
 // Check if local storage has user details (temp)
 async function setupViewProfile() {
-    if (checkUserToken()) {
-    } else {
-        // set up logout button
-        setUpLogout();
-    
-        // retrieve profile data
-        const arrOfUsers = await getAllProfiles();
+  if (checkUserToken()) {
+  } else {
+    // set up logout button
+    setUpLogout();
 
-        // get query string id param
-        const queryParams = getQueryParams(window.location.href);
-        const userId = queryParams.id;
+    // retrieve profile data
+    const arrOfUsers = await getAllProfiles();
 
-        arrOfUsers.forEach( user => {
-            // update user top and about first then fav mangas
-            if (user.userId === userId) {
-                // set username top
-                usernameTop.innerHTML = user.username;
-                // set instagram link href
-                instagramLink.href = user.instagram;
-                // set about heading and bio
-                aboutHeading.innerHTML = "About "+user.username;
-                aboutBio.innerHTML = user.about;
+    // get query string id param
+    const queryParams = getQueryParams(window.location.href);
+    const userId = queryParams.id;
 
-                // create div for each fav manga
-                // n**2 solution! Improve!!!
-                if (user.favmangas != null) {
-                    for (manga of user.favmangas) {
-                        favMangaDiv.innerHTML += `
+    arrOfUsers.forEach(user => {
+      // update user top and about first then fav mangas
+      if (user.userId === userId) {
+        // set username top
+        usernameTop.innerHTML = user.username;
+        // set instagram link href
+        instagramLink.href = user.instagram;
+        // set about heading and bio
+        aboutHeading.innerHTML = "About " + user.username;
+        aboutBio.innerHTML = user.about || "";
+
+        // create div for each fav manga
+        // n**2 solution! Improve!!!
+        if (user.favmangas != null) {
+          for (manga of user.favmangas) {
+            favMangaDiv.innerHTML += `
                         <div class="manga bg-white my-1 p-1">
                             <div>
                                 <h4>${manga.title}</h4>
@@ -59,27 +58,26 @@ async function setupViewProfile() {
                                 </ul>
                             </div>
                         </div>
-                        `
-                    }
-                }
-            }
-        });
-    }
-    let addToFavBtn = document.querySelectorAll(".manga .add-fav-btn");
-    addToFavBtn.forEach(elem => {
-        elem.addEventListener('click', addToFav);
+                        `;
+          }
+        }
+      }
     });
+  }
+  let addToFavBtn = document.querySelectorAll(".manga .add-fav-btn");
+  addToFavBtn.forEach(elem => {
+    elem.addEventListener("click", addToFav);
+  });
 }
 
 function addToFav(e) {
-    const btn = e.target;
-    // find name of manga to add
-    mangaTitleFav = btn.parentNode.getElementsByTagName("h4")[0].innerHTML;
-    // call postmanga
-    postManga(e);
+  const btn = e.target;
+  // find name of manga to add
+  mangaTitleFav = btn.parentNode.getElementsByTagName("h4")[0].innerHTML;
+  // call postmanga
+  postManga(e);
 }
 
 setupViewProfile();
 
 // -- Event Handlers
-
