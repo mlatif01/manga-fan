@@ -36,9 +36,9 @@ app.use("/api/favmanga", favMangaRoute);
 app.use("/api/mangaeden", mangaEdenRoute);
 
 // It's in charge of sending the main index.html file back to the client if it didn't receive a request it recognized otherwise.
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "./public/index.html"));
+// });
 
 // Run server on the specified port
 app.listen(port, function() {
