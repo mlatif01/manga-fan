@@ -1,20 +1,20 @@
 // HTTP Request Methods for User
-// var baseURL = "http://localhost:3000/api/";
-var baseURL = "https://159.65.86.190/api/";
+var baseURL = 'http://localhost:3000/api/';
+// var baseURL = "https://159.65.86.190/api/";
 
 // Functions
 async function getUserData() {
   const options = {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("user-token")
+      'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem('user-token')
     }
   };
 
   // Send get request to server
   try {
-    const response = await fetch(baseURL + "user", options);
+    const response = await fetch(baseURL + 'user', options);
     const data = await response.json();
 
     return data;
@@ -31,9 +31,9 @@ async function login(e) {
   const password = formGroup[1].firstElementChild.value;
 
   const options = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     },
     // Serialize json data
     body: JSON.stringify({
@@ -41,23 +41,24 @@ async function login(e) {
       password: password
     })
   };
+  console.log('CALLED');
 
   try {
     // Send post request to server
-    const response = await fetch(baseURL + "user/login", options);
+    const response = await fetch(baseURL + 'user/login', options);
     const data = await response.json();
 
-    toastr.success("Login Successful");
+    toastr.success('Login Successful');
 
     // wait a few seconds so user can see toastr message
     setTimeout(() => {
       if (data.token != null) {
-        localStorage.setItem("user-token", data.token);
-        window.location.replace("dashboard.html");
+        localStorage.setItem('user-token', data.token);
+        window.location.replace('dashboard.html');
       }
     }, 1000);
   } catch (err) {
-    toastr.error("Login Unsuccessful");
+    toastr.error('Login Unsuccessful');
     console.log(err);
   }
 }
@@ -70,7 +71,7 @@ async function register(e) {
   const password = formGroup[2].firstElementChild.value;
   const checkPassword = formGroup[3].firstElementChild.value;
   if (password != checkPassword) {
-    console.log("Password does not match!");
+    console.log('Password does not match!');
     return;
   }
 
@@ -78,9 +79,9 @@ async function register(e) {
   const email = formGroup[1].firstElementChild.value;
 
   const options = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     },
     // Serialize json data
     body: JSON.stringify({
@@ -92,20 +93,20 @@ async function register(e) {
 
   try {
     // Send post request to server
-    const response = await fetch(baseURL + "user/register", options);
+    const response = await fetch(baseURL + 'user/register', options);
     const data = await response.json();
-    toastr.success("Registration Successful");
+    toastr.success('Registration Successful');
 
     setTimeout(() => {
-      window.location.replace("login.html");
+      window.location.replace('login.html');
     }, 1000);
   } catch (err) {
-    toastr.error("Registration Unsuccessful");
+    toastr.error('Registration Unsuccessful');
     console.log(err);
   }
 }
 
 function onLogout() {
   localStorage.clear();
-  window.location.replace("index.html");
+  window.location.replace('index.html');
 }

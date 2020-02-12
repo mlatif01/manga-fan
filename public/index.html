@@ -1,59 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/4562bbca97.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://kit.fontawesome.com/4562bbca97.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
     <title>Welcome to MangaFan</title>
-</head>
-<body [data-app]="index" id="index-body" style="height: 100vh">
+  </head>
+  <body [data-app]="index" id="index-body" style="height: 100vh">
     <!-- Navigation-->
     <nav class="navbar bg-dark">
-        <h1>
-            <a href="">
-                <i class="fab fa-cloudversify"></i> MangaFan
-            </a>
-        </h1>
-        <ul>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
+      <h1>
+        <a href=""> <i class="fab fa-cloudversify"></i> MangaFan </a>
+      </h1>
+      <ul>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
     </nav>
 
     <!-- Landing -->
     <section class="landing">
-        <div class="landing-upper">
-            <img src="./img/watchout.png" id="watchout" alt="">
+      <div class="landing-upper">
+        <img src="./img/watchout.png" id="watchout" alt="" />
+      </div>
+      <div class="dark-overlay">
+        <div class="landing-inner">
+          <h1 class="x-large">Manga Fan</h1>
+          <p class="lead">
+            Create a profile, connect and read Manga with other fans!
+          </p>
+          <div class="button">
+            <span id="btn-register">
+              <a href="register.html" class="btn btn-primary">
+                <span class="shuriken">
+                  <img src="./img/shuriken-dark.png" alt="" />
+                  <p>Sign Up</p>
+                </span>
+              </a>
+            </span>
+            <span id="btn-login">
+              <a href="login.html" class="btn">
+                <span class="shuriken">
+                  <img src="./img/shuriken-dark.png" alt="" />
+                  <p>Login</p>
+                </span>
+              </a>
+            </span>
+          </div>
         </div>
-        <div class="dark-overlay">
-            <div class="landing-inner">
-                <h1 class="x-large">Manga Fan</h1>
-                <p class="lead">Create a profile, connect and read Manga with other fans!</p>
-                <div class="button">
-                    <span id="btn-register">
-                        <a href="register.html" class="btn btn-primary">
-                            <span class="shuriken">
-                                <img src="./img/shuriken-dark.png" alt="">
-                                <p>Sign Up</p>
-                            </span> 
-                        </a>
-                    </span>
-                    <span id="btn-login">
-                        <a href="login.html" class="btn">
-                            <span class="shuriken">
-                                <img src="./img/shuriken-dark.png" alt="">
-                                <p>Login</p>
-                            </span> 
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
     <script src="js/shuriken.js"></script>
     <script src="js/user-service.js"></script>
-</body>
+  </body>
 </html>
