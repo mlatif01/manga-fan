@@ -50,7 +50,6 @@ router.post('/register', async (req, res) => {
 
 // Login - POST
 router.post('/login', async (req, res) => {
-  console.log('WHY');
   // Validate the data before we create a user
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -74,7 +73,7 @@ router.post('/login', async (req, res) => {
 });
 
 // GET - user login data
-router.get('/', verify, async (req, res) => {
+router.get('/', async (req, res) => {
   const user = await User.findById(req.user);
   res.send({
     username: user.username,

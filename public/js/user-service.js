@@ -41,7 +41,8 @@ async function login(e) {
       password: password
     })
   };
-  console.log('CALLED');
+
+  console.log(options);
 
   try {
     // Send post request to server

@@ -1,10 +1,10 @@
 {
-  "name": "manga-fan-api",
+  "name": "auth",
   "version": "1.0.0",
   "description": "Run App Locally --- Download or clone repo.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "engines": {
     "node": "12.13.0"
